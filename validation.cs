@@ -5,7 +5,7 @@ using System.Web;
 using System.Data;
 using System.Data.OleDb;
 
-namespace compuSciProj2020
+namespace compuSciProj2021
 {
     public class validation
     {
@@ -33,36 +33,6 @@ namespace compuSciProj2020
                     return false;
             }
             return fname.Length >= 2;
-        }
-
-        public static bool CheckAll(Watch w1)
-        {
-            bool ok = true;
-            if (!CheckCatg(w1.Cat))
-            {
-                ok = false;
-            }
-            if (!CheckAmnt(w1.Amnt))
-            {
-                ok = false;
-            }
-            if (!CheckCost(w1.Cst))
-            {
-                ok = false;
-            }
-            if (!CheckPhoneNum(w1.Phone))
-            {
-                ok = false;
-            }
-            if (!CheckEmail(w1.MailAddrs))
-            {
-                ok = false;
-            }
-            if (!CheckPic(w1.Pic))
-            {
-                ok = false;
-            }
-            return ok;
         }
 
         public static bool CheckCatg(String cat)// checks if category was filled in

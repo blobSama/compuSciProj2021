@@ -4,11 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
-using System.Data.OleDb;
-using System.Windows.Input;
 
-namespace compuSciProj2020
+namespace compuSciProj2021
 {
     public partial class updateInfo : System.Web.UI.Page
     {
@@ -49,7 +46,7 @@ namespace compuSciProj2020
             string pass = passwordChnge.Text;
             string passVrfy = passwordVrfy.Text;
             string id = ((User)Session["curUser"]).ID;
-            if(string.IsNullOrEmpty(fNameChange.Text))
+            if (string.IsNullOrEmpty(fNameChange.Text))
             {
                 firstN = ((User)Session["curUser"]).Firstname;
             }
@@ -78,7 +75,7 @@ namespace compuSciProj2020
                 pass = ((User)Session["curUser"]).pssWrd;
                 passVrfy = pass;
             }
-            
+
             User u1 = new User();
             u1.Addrs = email;
             u1.Age = age;

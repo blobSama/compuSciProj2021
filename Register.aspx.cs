@@ -7,20 +7,20 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.OleDb;
 
-namespace compuSciProj2020
+namespace compuSciProj2021
 {
-    public partial class WebForm3 : System.Web.UI.Page
+    public partial class Register : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["curUser"] != null)
+            if (Session["curUser"] != null)
             {
                 hello.Text = "Hello, " + ((User)Session["curUser"]).Firstname;
             }
             else
             {
                 hello.Text = "Hello, Guest";
-                
+
             }
         }
 
@@ -31,7 +31,7 @@ namespace compuSciProj2020
             string mail = Request.Form["mail"];
             int age = int.Parse(Request.Form["age"]);
             string pass = Request.Form["password"];
-            string passVrfy = Request.Form["passwordConf"];
+            string passVrfy = Request.Form["passwordConfirm"];
             string id = UId.Text;
 
             User u1 = new User();

@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace compuSciProj2020
+namespace compuSciProj2021
 {
 
 
-    public partial class WebForm2
+    public partial class about
     {
 
         /// <summary>

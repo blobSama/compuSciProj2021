@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace compuSciProj2020
+namespace compuSciProj2021
 {
     public class Connect
     {
-        const string FileName = "compuProj2020.1.accdb";
+        const string FileName = "compuSciProj2021.2.accdb";
         public static string GetConnectionString()
         {
             string location = HttpContext.Current.Server.MapPath("~/App_Data/" + FileName);

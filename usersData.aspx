@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="usersData.aspx.cs" Inherits="compuSciProj2020.usersData" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="usersData.aspx.cs" Inherits="compuSciProj2021.usersData" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title> All Users </title>
-	<link rel="stylesheet" type="text/css" href="styleSheet.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styleSheet.css"/>
 </head>
 <body>
     <div id="header">

@@ -1,14 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Homepage.aspx.cs" Inherits="compuSciProj2020.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Homepage.aspx.cs" Inherits="compuSciProj2021.Homepage" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title> Homepage </title>
-    <link rel="stylesheet" type="text/css" href="styleSheet.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styleSheet.css"/>
 </head>
 <body>
-     <div id="header">
+    <div id="header">
         <ul>
             <li><a class="bttn1" href="Homepage.aspx">Home Page</a></li>
             <li><a class="bttn1" href="signIn.aspx">Sign In</a></li>
@@ -28,28 +28,5 @@
     <footer id="foot1">
         <p>contact us - ariel.berant@gmail.com</p>
     </footer>
-    <div>
-        <img class ="mySlides" src="Images/1.jpg" />
-        <img class ="mySlides" src="Images/2.jpg" />
-        <img class ="mySlides" src="Images/3.jpg" />
-        <img class ="mySlides" src="Images/4.jpg" />
-    </div>
-    <script>
-        var myIndex = 0;
-        carousel();
-        function carousel() {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            myIndex++;
-            if (myIndex > x.length) {
-                myIndex = 1
-            }
-            x[myIndex - 1].style.display = "block";
-            setTimeout(carousel, 3400);
-        }
-    </script>
 </body>
 </html>

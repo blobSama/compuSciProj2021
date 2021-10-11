@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace compuSciProj2020
+namespace compuSciProj2021
 {
     public class User
     {

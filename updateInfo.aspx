@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="updateInfo.aspx.cs" Inherits="compuSciProj2020.updateInfo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="updateInfo.aspx.cs" Inherits="compuSciProj2021.updateInfo" %>
 
 <!DOCTYPE html>
 

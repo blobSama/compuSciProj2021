@@ -1,13 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="about.aspx.cs" Inherits="compuSciProj2020.WebForm2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="about.aspx.cs" Inherits="compuSciProj2021.about" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Sign In</title>
-	<link rel="stylesheet" type="text/css" href="styleSheet.css"/>
-    <script src="projScript.js"></script>
-
+	<link rel="stylesheet" type="text/css" href="css/styleSheet.css"/>
+    <script src="script/projScript.js"></script>
 </head>
 <body>
     <div id="header">
