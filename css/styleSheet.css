@@ -42,6 +42,10 @@ body {
     text-size-adjust: auto;
     grid-column-start: 1;
     grid-column-end: 4;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
 }
 /*
 #rate{

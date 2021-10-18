@@ -11,7 +11,15 @@ namespace compuSciProj2021
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["curUser"] != null)
+            {
+                hello.Text = "Hello, " + ((User)Session["curUser"]).Firstname;
+            }
+            else
+            {
+                hello.Text = "Hello, Guest";
 
+            }
         }
     }
 }
