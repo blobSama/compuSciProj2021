@@ -71,9 +71,11 @@
     <Content Include="App_Data\compuSciProj2021.2.accdb" />
     <Content Include="css\styleSheet.css" />
     <Content Include="Homepage.aspx" />
+    <Content Include="learnPy.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="script\projScript.js" />
     <Content Include="signIn.aspx" />
+    <Content Include="updateInfo.aspx" />
     <Content Include="usersData.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -93,6 +95,13 @@
     <Compile Include="Homepage.aspx.designer.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="learnPy.aspx.cs">
+      <DependentUpon>learnPy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="learnPy.aspx.designer.cs">
+      <DependentUpon>learnPy.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
@@ -107,6 +116,13 @@
     </Compile>
     <Compile Include="signIn.aspx.designer.cs">
       <DependentUpon>signIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="updateInfo.aspx.cs">
+      <DependentUpon>updateInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="updateInfo.aspx.designer.cs">
+      <DependentUpon>updateInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
     <Compile Include="usersData.aspx.cs">

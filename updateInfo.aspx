@@ -5,8 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title> Update Your Info </title>
-    <link rel="stylesheet" type="text/css" href="styleSheet.css" />
-    <script src="projScript.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/styleSheet.css" />
+    <script src="script/projScript.js"></script>
 </head>
 <body>
     <div id="header">
@@ -17,6 +17,7 @@
             <li><a class="bttn1" href="usersData.aspx">Users Data</a></li>
             <li><a class="bttn1" href="about.aspx">About Us</a></li>
             <li><asp:HyperLink CssClass="bttn1" ID="infoUpdate" href="updateInfo.aspx" runat="server">Update User Info</asp:HyperLink></li>
+            <li><asp:HyperLink CssClass="bttn1" ID="learnPython" href="learnPy.aspx" runat="server">HyperLink</asp:HyperLink></li>
             <li style="float:right"><asp:Label ID="hello" CssClass="greet" runat="server" Text=""></asp:Label></li>
         </ul>
         <br/>

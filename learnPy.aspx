@@ -1,11 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Homepage.aspx.cs" Inherits="compuSciProj2021.Homepage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="learnPy.aspx.cs" Inherits="compuSciProj2021.learnPy" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title> Homepage </title>
+    <title>Coding Tutorials</title>
     <link rel="stylesheet" type="text/css" href="css/styleSheet.css"/>
+    <script src="script/projScript.js"></script>
 </head>
 <body>
     <div id="header">
@@ -21,11 +22,14 @@
         </ul>
         <br/>
     </div>
-    <br/>
+    <br />
     <div id="title">
-        <p>Learn Python!</p>
-        <p>Welcome to our site! Roam around!</p>
+        <p>SmartWatch Comparison</p>
     </div>
+    <form id="form1" runat="server">
+        <div>
+        </div>
+    </form>
     <footer id="foot1">
         <p>contact us - ariel.berant@gmail.com</p>
     </footer>
