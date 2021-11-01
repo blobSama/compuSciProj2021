@@ -24,19 +24,19 @@
     </div>
     <br />
     <div id="title">
-        <p>SmartWatch Comparison</p>
+        <p>Learn python!</p>
     </div>
     <form id="form1" runat="server">
         <div id="registOut">
             <div id="regist">
                 <div>
-                    <h1>Sign In</h1><br />
+                    <div style="text-align:center"><h1>Sign In</h1></div><br />
                     <asp:Label ID="idLbl" runat="server" Text="Enter Id:"></asp:Label><br />
                     <asp:TextBox ID="idTxt" CssClass="in" runat="server" autofocus="autofocus"></asp:TextBox><br /><br />
                     <asp:Label ID="passLbl" runat="server" Text="Enter Password:"></asp:Label><br />
                     <asp:TextBox ID="passTxt" CssClass="in" TextMode="Password" runat="server"></asp:TextBox><br /><br />
-                    <asp:Button ID="Button1" CssClass="sub1" runat="server" Text="Sign In" OnClick="Button1_Click" /><br />
-                    <asp:Label ID="problemShow" runat="server" Text=""></asp:Label>
+                    <div style="text-align:center"><asp:Button ID="Button1" CssClass="sub1" runat="server" Text="Sign In" OnClick="Button1_Click" /></div><br />
+                    <asp:Label ID="problemShow" runat="server" Text=""></asp:Label><br />&nbsp
                 </div>
             </div>
         </div>

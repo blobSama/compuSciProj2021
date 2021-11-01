@@ -24,13 +24,13 @@
     </div>
     <br />
     <div id="title">
-        <p>SmartWatch Comparison</p>
+        <p>Learn python!</p>
     </div>
     <form id="form1" runat="server">
         <div id="registOut">
             <div id="regist">
                 <div>
-                    <h1>About Us</h1><br />
+                    <div style="text-align:center"><h1>About Us</h1></div><br />
                     <p>
                         I am Ariel Berant, 17 years old from Ramat-Gan. I wanted to buy myself a good quality smart watch.
                     </p>

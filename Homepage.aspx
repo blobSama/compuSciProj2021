@@ -23,7 +23,7 @@
     </div>
     <br/>
     <div id="title">
-        <p>Learn Python!</p>
+        <p>Learn python!</p>
         <p>Welcome to our site! Roam around!</p>
     </div>
     <footer id="foot1">

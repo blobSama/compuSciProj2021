@@ -24,10 +24,17 @@
     </div>
     <br />
     <div id="title">
-        <p>SmartWatch Comparison</p>
+        <p>Learn python!</p>
     </div>
     <form id="form1" runat="server">
         <div>
+            <ul class="navbar">
+                <li><a class="active, navBttn" href="#home">Home</a></li>
+                <li><a class="navBttn" href="#news">News</a></li>
+                <li><a class="navBttn" href="#contact">Contact</a></li>
+                <li><a class="navBttn" href="#about">About</a></li>
+            </ul>
+
         </div>
     </form>
     <footer id="foot1">

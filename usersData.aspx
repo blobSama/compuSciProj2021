@@ -22,7 +22,7 @@
         <br/>
     </div>               
 	<div id="title">
-		<p>SmartWatch Comparison</p>
+		<p>Learn python!</p>
 	</div>
 	<div class="wtchData">
 		<form class="wtchData" id="form1" runat="server">
