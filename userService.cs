@@ -130,7 +130,7 @@ namespace compuSciProj2021
             try
             {
                 myConnection.Open();
-                string sSql = "UPDATE Users SET firstName = '" + u.Firstname + "', [lastName] = '" + u.Lastname + "', [mailAdrs] = '" + u.Addrs + "', [age] = " + u.Age + ", [password] = '" + u.pssWrd + "' WHERE ID = '" + u.ID + "'";
+                string sSql = "UPDATE Users SET firstName = '" + u.Firstname + "', [lastName] = '" + u.Lastname + "', [mailAdrs] = '" + u.Addrs + "', [age] = " + u.Age + ", [password] = '" + u.pssWrd + "', [isActive] = " + u.Active + " WHERE ID = '" + u.ID + "'";
                 OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
                 myCmd.ExecuteNonQuery();
             }

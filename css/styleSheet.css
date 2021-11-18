@@ -15,10 +15,7 @@ table {
 
 .wtchData {
     grid-area: grid;
-    border: 0px;
     /*align-items: left;*/
-    margin: 20px auto;
-    border-width: 2px;
     grid-column-start: 1;
     grid-column-end: 4;
 }
@@ -44,7 +41,7 @@ body {
 
 #header {
     grid-area: header;
-    background-color: deepskyblue;
+    background-color: none;
     text-size-adjust: auto;
     grid-column-start: 1;
     grid-column-end: 4;
@@ -258,6 +255,23 @@ li {
 }
 
 .bttn1:hover {
+    background-color: white;
+    color: darkgoldenrod;
+}
+
+.bttn2 {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 5px 10px;
+    text-decoration: none;
+    font: "Courier New";
+    background-color: #333;
+    border-bottom-style:none;
+    border-radius: 25px;
+}
+
+.bttn2:hover {
     background-color: white;
     color: darkgoldenrod;
 }

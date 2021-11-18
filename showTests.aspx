@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="signIn.aspx.cs" Inherits="compuSciProj2021.signIn" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="showTests.aspx.cs" Inherits="compuSciProj2021.showTests" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Sign In</title>
+    <title>All Tests</title>
 	<link rel="stylesheet" type="text/css" href="css/styleSheet.css"/>
     <script src="script/projScript.js"></script>
 </head>
@@ -28,18 +28,13 @@
         <p>Learn python!</p>
     </div>
     <form id="form1" runat="server">
-        <div id="registOut">
-            <div id="regist">
-                <div>
-                    <div style="text-align:center"><h1>Sign In</h1></div><br />
-                    <asp:Label ID="idLbl" runat="server" Text="Enter Id:"></asp:Label><br />
-                    <asp:TextBox ID="idTxt" CssClass="in" runat="server" autofocus="autofocus"></asp:TextBox><br /><br />
-                    <asp:Label ID="passLbl" runat="server" Text="Enter Password:"></asp:Label><br />
-                    <asp:TextBox ID="passTxt" CssClass="in" TextMode="Password" runat="server"></asp:TextBox><br /><br />
-                    <div style="text-align:center"><asp:Button ID="Button1" CssClass="sub1" runat="server" Text="Sign In" OnClick="Button1_Click" /></div><br />
-                    <asp:Label ID="problemShow" runat="server" Text=""></asp:Label><br />&nbsp
-                </div>
-            </div>
+        <div>
+            <asp:DataList ID="DataList1" runat="server">
+                <ItemTemplate>
+                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("subjName") %>'></asp:Label><br />
+                    <asp:Button ID="Button1" runat="server" Text="Go to test" />
+                </ItemTemplate>
+            </asp:DataList>
         </div>
     </form>
     <footer id="foot1">

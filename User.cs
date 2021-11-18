@@ -15,6 +15,7 @@ namespace compuSciProj2021
         private int age;
         private bool isManager;
         private string pssWrdVrfy;
+        private bool isActive;
 
         public User()
         {
@@ -114,6 +115,18 @@ namespace compuSciProj2021
             set
             {
                 this.pssWrdVrfy = value;
+            }
+        }
+
+        public bool Active
+        {
+            get
+            {
+                return this.isActive;
+            }
+            set
+            {
+                this.isActive = value;
             }
         }
     }

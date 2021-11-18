@@ -33,6 +33,15 @@ namespace compuSciProj2021
         protected global::System.Web.UI.WebControls.HyperLink learnPython;
 
         /// <summary>
+        /// tests control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink tests;
+
+        /// <summary>
         /// hello control.
         /// </summary>
         /// <remarks>

@@ -11,7 +11,11 @@ namespace compuSciProj2021
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            PopulateGrid();
+            if (!IsPostBack)
+            {
+                PopulateGrid();
+            }
+            
             if (Session["curUser"] != null && ((User)Session["curUser"]).Manager)
             {
                 hello.Text = "Hello, " + ((User)Session["curUser"]).Firstname;
@@ -43,5 +47,34 @@ namespace compuSciProj2021
                 IDWrng.Text = "Please enter valid id number.";
             }
         }
+
+        protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridView1.EditIndex = e.NewEditIndex;
+            PopulateGrid();
+        }
+
+        protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView1.EditIndex = -1;
+            PopulateGrid();
+        }
+
+        protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            User u = new User();
+            
+            u.ID = ((GridView1.Rows[e.RowIndex].Cells[0])).Text;
+            u.Firstname = ((TextBox)(GridView1.Rows[e.RowIndex].Cells[1].Controls[0])).Text;
+            u.Lastname = ((TextBox)(GridView1.Rows[e.RowIndex].Cells[2].Controls[0])).Text;
+            u.Addrs = ((TextBox)(GridView1.Rows[e.RowIndex].Cells[3].Controls[0])).Text;
+            u.pssWrd = ((TextBox)(GridView1.Rows[e.RowIndex].Cells[5].Controls[0])).Text;
+            u.Age = (int.Parse)(((TextBox)(GridView1.Rows[e.RowIndex].Cells[4].Controls[0])).Text);
+            u.Active = (bool.Parse)(((TextBox)(GridView1.Rows[e.RowIndex].Cells[6].Controls[0])).Text);
+            userService us = new userService();
+            us.UpdateUser(u);
+            GridView1.EditIndex = -1;
+            PopulateGrid();
+        }  
     }
 }

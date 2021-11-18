@@ -74,6 +74,7 @@
     <Content Include="learnPy.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="script\projScript.js" />
+    <Content Include="showTests.aspx" />
     <Content Include="signIn.aspx" />
     <Content Include="updateInfo.aspx" />
     <Content Include="usersData.aspx" />
@@ -110,6 +111,13 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="showTests.aspx.cs">
+      <DependentUpon>showTests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="showTests.aspx.designer.cs">
+      <DependentUpon>showTests.aspx</DependentUpon>
+    </Compile>
     <Compile Include="signIn.aspx.cs">
       <DependentUpon>signIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -117,6 +125,7 @@
     <Compile Include="signIn.aspx.designer.cs">
       <DependentUpon>signIn.aspx</DependentUpon>
     </Compile>
+    <Compile Include="testService.cs" />
     <Compile Include="updateInfo.aspx.cs">
       <DependentUpon>updateInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
