@@ -29,16 +29,34 @@
     </div>
     <form id="form1" runat="server">
         <div>
-            <asp:DataList ID="DataList1" runat="server">
+            <ul>
+                <li><asp:DropDownList ID="DropDownList1" runat="server">
+                        <asp:ListItem>Choose Difficulty:</asp:ListItem>
+                        <asp:ListItem>Hard</asp:ListItem>
+                        <asp:ListItem>Medium</asp:ListItem>
+                        <asp:ListItem>Easy</asp:ListItem>
+                    </asp:DropDownList></li>
+                <li><asp:DropDownList ID="DropDownList2" runat="server">
+                        <asp:ListItem>Choose Time of Upload:</asp:ListItem>
+                        <asp:ListItem>This Year</asp:ListItem>
+                        <asp:ListItem>This Month</asp:ListItem>
+                        <asp:ListItem>Today</asp:ListItem>
+                    </asp:DropDownList></li>
+                <li><asp:Button runat="server" ID="sort" CssClass ="bttn1" OnClick="sort_Click" /></li>
+            </ul>
+            <asp:DataList ID="DataList1" runat="server" DataKeyField="testNum" OnItemCommand="DataList1_ItemCommand" RepeatColumns="5">
                 <ItemTemplate>
-                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("subjName") %>'></asp:Label><br />
-                    <asp:Button ID="Button1" runat="server" Text="Go to test" />
+                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("subjName") %>'></asp:Label>
+                    <br></br>
+                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("difficulty") %>'></asp:Label>
+                    <br />
+                    <asp:Button ID="Button2" runat="server" Text="Go to " CommandName="goToTest"/>
                 </ItemTemplate>
             </asp:DataList>
         </div>
     </form>
     <footer id="foot1">
 		<p>contact us - ariel.berant@gmail.com</p>
-	</footer>
+    </footer>
 </body>
 </html>

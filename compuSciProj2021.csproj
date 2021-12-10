@@ -78,6 +78,7 @@
     <Content Include="signIn.aspx" />
     <Content Include="updateInfo.aspx" />
     <Content Include="usersData.aspx" />
+    <Content Include="tests.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +126,7 @@
     <Compile Include="signIn.aspx.designer.cs">
       <DependentUpon>signIn.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Test.cs" />
     <Compile Include="testService.cs" />
     <Compile Include="updateInfo.aspx.cs">
       <DependentUpon>updateInfo.aspx</DependentUpon>
@@ -143,6 +145,13 @@
     </Compile>
     <Compile Include="userService.cs" />
     <Compile Include="validation.cs" />
+    <Compile Include="tests.aspx.cs">
+      <DependentUpon>tests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tests.aspx.designer.cs">
+      <DependentUpon>tests.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -15,11 +15,14 @@ namespace compuSciProj2021
             if (Session["curUser"] != null)
             {
                 hello.Text = "Hello, " + ((User)Session["curUser"]).Firstname;
-                populateDataList();
             }
             else
             {
                 Response.Redirect("Homepage.aspx");
+            }
+            if (!Page.IsPostBack)
+            {
+                populateDataList();
             }
         }
      
@@ -34,6 +37,30 @@ namespace compuSciProj2021
         {
             testService ts = new testService();
             return ts.GetTests();
+        }
+
+        protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            if(e.CommandName == "goToTest")
+            {
+                int num = Convert.ToInt32(DataList1.DataKeys[e.Item.ItemIndex]); 
+                Session["testNumb"] = num;
+                Response.Redirect("tests.aspx");
+            }
+        }
+
+        private DataSet GetSortedTests(int diff, int time)
+        {
+            testService ts = new testService();
+            return ts.GetMatchTests(diff, time);
+        }
+
+        protected void sort_Click(object sender, EventArgs e)
+        {
+            int diff = DropDownList1.SelectedIndex;
+            int time = DropDownList2.SelectedIndex;
+            DataList1.DataSource = GetSortedTests(diff, time);
+            DataList1.DataBind();
         }
     }
 }

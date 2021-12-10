@@ -181,6 +181,36 @@ namespace compuSciProj2021
             return ok;
         }
 
+        public static string CheckWhatWrong(User u)
+        {
+            string ok = "";
+            if (!CheckEmail(u.Addrs))
+            {
+                ok += ", " + "Email address is wrong";
+            }
+            if (!CheckAge(u.Age))
+            {
+                ok += ", " + "Age is invalid.";
+            }
+            if (!CheckFName(u.Firstname))
+            {
+                ok = ", " + "First name is invalid.";
+            }
+            if (!CheckLName(u.Firstname))
+            {
+                ok = ", " + "Last name is invalid.";
+            }
+            if (!CheckPass(u.pssWrd, u.passwordVerify))
+            {
+                ok = ", " + "Password invalid or not iterated correctly.";
+            }
+            if (!CheckId(u.ID))
+            {
+                ok = ", " + "id is wrong.";
+            }
+            return ok;
+        }
+
         public static bool idExists(string id)
         {
             bool ok = false;

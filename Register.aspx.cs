@@ -15,12 +15,11 @@ namespace compuSciProj2021
         {
             if (Session["curUser"] != null)
             {
-                hello.Text = "Hello, " + ((User)Session["curUser"]).Firstname;
+                Response.Redirect("Homepage.aspx");
             }
             else
             {
                 hello.Text = "Hello, Guest";
-
             }
         }
 
@@ -65,7 +64,7 @@ namespace compuSciProj2021
             {
                 submit.Enabled = false;
                 submit.CssClass = "sub1";
-                csWrong.Text = "Something went wrong. Please try again.";
+                csWrong.Text = validation.CheckWhatWrong(u1);
             }
         }
     }

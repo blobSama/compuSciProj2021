@@ -179,7 +179,7 @@ function checkUMail() {
 
 function checkAge() {
     var uAge = document.getElementById("age").value;
-    if (uAge < 16) {
+    if (uAge == null || uAge < 16) {
         document.getElementById("ageWrng").innerText = "Please enter valid age.";
         document.getElementById("age").value = "";
         return false;
