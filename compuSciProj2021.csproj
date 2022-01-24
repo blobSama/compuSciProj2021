@@ -68,14 +68,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.aspx" />
+    <Content Include="allTests.aspx" />
     <Content Include="App_Data\compuSciProj2021.2.accdb" />
     <Content Include="css\styleSheet.css" />
     <Content Include="Homepage.aspx" />
+    <Content Include="images\c-sharp-c-logo-02F17714BA-seeklogo.com.png" />
+    <Content Include="images\istockphoto-1300397135-612x612.jpg" />
+    <Content Include="images\wallpapersden.com_programming-coding-language_1920x1080.jpg" />
     <Content Include="learnPy.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="script\projScript.js" />
     <Content Include="showTests.aspx" />
     <Content Include="signIn.aspx" />
+    <Content Include="testResults.aspx" />
     <Content Include="updateInfo.aspx" />
     <Content Include="usersData.aspx" />
     <Content Include="tests.aspx" />
@@ -88,6 +93,13 @@
     </Compile>
     <Compile Include="about.aspx.designer.cs">
       <DependentUpon>about.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="allTests.aspx.cs">
+      <DependentUpon>allTests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="allTests.aspx.designer.cs">
+      <DependentUpon>allTests.aspx</DependentUpon>
     </Compile>
     <Compile Include="Connect.cs" />
     <Compile Include="Homepage.aspx.cs">
@@ -127,6 +139,13 @@
       <DependentUpon>signIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="Test.cs" />
+    <Compile Include="testResults.aspx.cs">
+      <DependentUpon>testResults.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="testResults.aspx.designer.cs">
+      <DependentUpon>testResults.aspx</DependentUpon>
+    </Compile>
     <Compile Include="testService.cs" />
     <Compile Include="updateInfo.aspx.cs">
       <DependentUpon>updateInfo.aspx</DependentUpon>

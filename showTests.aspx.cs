@@ -44,22 +44,23 @@ namespace compuSciProj2021
             if(e.CommandName == "goToTest")
             {
                 int num = Convert.ToInt32(DataList1.DataKeys[e.Item.ItemIndex]); 
-                Session["testNumb"] = num;
+                Session["testNum"] = num;
                 Response.Redirect("tests.aspx");
             }
         }
 
-        private DataSet GetSortedTests(int diff, int time)
+        private DataSet GetSortedTests(int diff, int time, int topic)
         {
             testService ts = new testService();
-            return ts.GetMatchTests(diff, time);
+            return ts.GetMatchTests(diff, time, topic);
         }
 
         protected void sort_Click(object sender, EventArgs e)
         {
             int diff = DropDownList1.SelectedIndex;
             int time = DropDownList2.SelectedIndex;
-            DataList1.DataSource = GetSortedTests(diff, time);
+            int topic = DropDownList3.SelectedIndex;
+            DataList1.DataSource = GetSortedTests(diff, time, topic);
             DataList1.DataBind();
         }
     }

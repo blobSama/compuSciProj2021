@@ -39,7 +39,7 @@ namespace compuSciProj2021
             return dataset;
         }
 
-        public DataSet GetMatchTests(int diff, int time)
+        public DataSet GetMatchTests(int diff, int time, int topic)
         {
             DataSet dataset = new DataSet();
             try
@@ -50,7 +50,8 @@ namespace compuSciProj2021
                 {
                     case 0:
                         break;
-                    case 1: sSql += " AND difficulty = 'Hard'";
+                    case 1:
+                        sSql += " AND difficulty = 'Hard'";
                         break;
                     case 2:
                         sSql += " AND difficulty = 'Medium'";
@@ -61,11 +62,12 @@ namespace compuSciProj2021
                     default: break;
                 }
 
-                switch(time)
+                switch (time)
                 {
                     case 0: break;
-                    
-                    case 1: sSql += " AND Year(uploadDate) = "+ DateTime.Now.Year;
+
+                    case 1:
+                        sSql += " AND Year(uploadDate) = " + DateTime.Now.Year;
                         break;
                     case 2:
                         sSql += " AND Year(uploadDate) = " + DateTime.Now.Year + " AND MONTH(uploadDate) = " + DateTime.Now.Month;
@@ -75,10 +77,101 @@ namespace compuSciProj2021
                         break;
                     default: break;
                 }
+
+                switch (topic)
+                {
+                    case 0: break;
+
+                    case 1:
+                        sSql += " AND subjNum = 1";
+                        break;
+                    case 2:
+                        sSql += " AND subjNum = 2";
+                        break;
+                    case 3:
+                        sSql += " AND subjNum = 3";
+                        break;
+                    case 4:
+                        sSql += " AND subjNum = 4";
+                        break;
+                    case 5:
+                        sSql += " AND subjNum = 5";
+                        break;
+                    default: break;
+                }
                 OleDbCommand cmd = new OleDbCommand(sSql, myConnection);
                 OleDbDataAdapter adapter = new OleDbDataAdapter();
                 adapter.SelectCommand = cmd;
                 adapter.Fill(dataset);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return dataset;
+        }
+
+        public DataSet GetTestById(int num)
+        {
+            DataSet dataset = new DataSet();
+            try
+            {
+                myConnection.Open();
+                string sSql = "select questNum, question, answer1, answer2, answer3, answer4, rightAns from testQuestions where testNumber = " + num + "";
+                OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
+                OleDbDataAdapter adapter = new OleDbDataAdapter();
+                adapter.SelectCommand = myCmd;
+                adapter.Fill(dataset, "tests");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return dataset;
+        }
+
+        public DataSet GetRghtAnsByQ(int num)
+        {
+            DataSet dataset = new DataSet();
+            try
+            {
+                myConnection.Open();
+                string sSql = "select rightAns from testQuestions where questNum = " + num + "";
+                OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
+                OleDbDataAdapter adapter = new OleDbDataAdapter();
+                adapter.SelectCommand = myCmd;
+                adapter.Fill(dataset, "tests");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return dataset;
+        }
+
+        public DataSet GetAllComplTests(int num)
+        {
+            DataSet dataset = new DataSet();
+            try
+            {
+                myConnection.Open();
+                string sSql = "select testSerialNum, testTime, grade, testedUserID from allTests";
+                OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
+                OleDbDataAdapter adapter = new OleDbDataAdapter();
+                adapter.SelectCommand = myCmd;
+                adapter.Fill(dataset, "tests");
             }
             catch (Exception ex)
             {
