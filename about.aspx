@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="header">
-        <ul>
+        <ul class="header">
             <li><a class="bttn1" href="Homepage.aspx">Home Page</a></li>
             <li><a class="bttn1" href="signIn.aspx">Sign In</a></li>
             <li><a class="bttn1" href="Register.aspx">Register</a></li>

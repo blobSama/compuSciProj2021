@@ -41,8 +41,10 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     grid-auto-flow: row;
     justify-content: space-evenly;
-    background-image:url('../images/wallpapersden.com_programming-coding-language_1920x1080.jpg');
-    background-repeat:no-repeat;
+    background-image: url('../images/wallpapersden.com_programming-coding-language_1920x1080.jpg');
+    background-repeat: no-repeat;
+    background-attachment: inherit;
+    background-size: cover;
     grid-row-gap: 15px;
 }
 
@@ -150,8 +152,12 @@ img {
     grid-column-start: 2;
     grid-column-end: 3;
     background-image:url('../images/istockphoto-1300397135-612x612.jpg');
-    margin: 15px;
+    background-repeat:no-repeat;
+    background-attachment:inherit;
+    background-size:cover;
+    margin: 25px;
     text-align:left;
+    color: greenyellow;
 }
 
 .lbl1 {
@@ -192,8 +198,12 @@ img {
     border-right: none;
     border-left: none;
     border-bottom: 1px solid red;
-    background-image:url('../images/istockphoto-1300397135-612x612.jpg');
-    outline:none;
+    /* background-image:url('../images/istockphoto-1300397135-612x612.jpg');*/
+    background-color: #16395F;
+    outline: none;
+    border-radius:25px;
+    margin-top:10px;
+    color:ghostwhite;
 }
 
 .in2 {
@@ -245,14 +255,14 @@ img {
     grid-column-end: 3;
     text-align:center;
 }
-
+/*
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
-}
+}*/
 
 li {
     float: left;
@@ -365,12 +375,17 @@ navBttn:hover:not(.active) {
     color: white;
 }
 
-.datalistDiv{
+.datalistDiv {
     margin: 10px;
+    background-color: aquamarine;
+    display: flex;
+    align-items: center;
+    border-radius: 25px;
+    border: 2px solid black;
 }
 
 .indatlstdiv {
-    border: 2px solid black;
+    
 }
 
 .ddlDtaLst {
@@ -389,7 +404,6 @@ navBttn:hover:not(.active) {
     background-color: #333;
     border-bottom-style: none;
     border-radius: 25px;
-    margin:5px;
 }
 
 #testOut {
@@ -408,4 +422,54 @@ navBttn:hover:not(.active) {
     display:flex;
     align-items:center;
     margin-bottom:35px;
+    background-color:aquamarine;
+    border: 2px solid black;
+    border-radius:7px;
+}
+
+.datalistLbl{
+    margin:20px;
+    
+}
+
+.dtaLstBttn {
+    margin: 15px;
+    font-family: "Courier New", Courier, monospace;
+    background-color: #626466;
+    border: none;
+    color: #fff;
+    border-radius: 7px;
+    
+}
+
+.header {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.brClass {
+    display: block; /* makes it have a width */
+    content: ""; /* clears default height */
+    margin-top: 5%;
+}
+
+.questionsDiv {
+    margin: 10px;
+    background-color: aquamarine;
+    border-radius: 25px;
+    border: 2px solid black;
+    padding:5%;
+}
+
+.dtListddl {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    background-color: #333;
+    display:flex;
+    align-items:center;
+    width:490px;
 }

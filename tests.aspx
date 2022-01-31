@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="header">
-        <ul>
+        <ul class="header">
             <li><a class="bttn1" href="Homepage.aspx">Home Page</a></li>
             <li><a class="bttn1" href="signIn.aspx">Sign In</a></li>
             <li><a class="bttn1" href="Register.aspx">Register</a></li>
@@ -31,7 +31,7 @@
                 
                 <asp:DataList ID="DataList1" runat="server" DataKeyField="questNum">
                     <ItemTemplate>
-                        <div class="datalistDiv" runat="server">
+                        <div class="questionsDiv" runat="server">
                             <asp:Label ID="Label1" runat="server" Text='<%# Eval("question") %>'></asp:Label><br />
                             a)<asp:RadioButton ID="answer1" runat="server" GroupName="answers" Text='<%# Eval("answer1") %>' /><br />
                             b)<asp:RadioButton ID="answer2" runat="server" GroupName="answers" Text='<%# Eval("answer2") %>' /><br />

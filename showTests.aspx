@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="header">
-        <ul>
+        <ul class="header">
             <li><a class="bttn1" href="Homepage.aspx">Home Page</a></li>
             <li><a class="bttn1" href="signIn.aspx">Sign In</a></li>
             <li><a class="bttn1" href="Register.aspx">Register</a></li>
@@ -29,7 +29,7 @@
     </div>
     <form id="form1" runat="server">
         <div>
-            <ul>
+            <ul class="dtListddl">
                 <li><asp:DropDownList CssClass="ddlDtaLst" ID="DropDownList1" runat="server">
                         <asp:ListItem>Choose Difficulty:</asp:ListItem>
                         <asp:ListItem>Hard</asp:ListItem>
@@ -56,6 +56,7 @@
                 <ItemTemplate>
                     <div class="datalistDiv" runat="server">
                         <div class="indatlstdiv" runat="server">
+                            <br class="brClass"/>
                             <asp:Label CssClass="datalistLbl" ID="Label1" runat="server" Text='<%# Eval("subjName") %>'></asp:Label>
                             <br></br>
                             <asp:Label CssClass="datalistLbl" ID="Label2" runat="server" Text='<%# Eval("difficulty") %>'></asp:Label>
