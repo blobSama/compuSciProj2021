@@ -51,6 +51,15 @@ namespace compuSciProj2021
         protected global::System.Web.UI.WebControls.HyperLink tests;
 
         /// <summary>
+        /// showDonetests control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink showDonetests;
+
+        /// <summary>
         /// hello control.
         /// </summary>
         /// <remarks>
@@ -67,5 +76,14 @@ namespace compuSciProj2021
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+
+        /// <summary>
+        /// DataList1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList DataList1;
     }
 }

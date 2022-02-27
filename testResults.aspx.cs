@@ -51,8 +51,15 @@ namespace compuSciProj2021
         private DataSet GetData()
         {
             int testNum = (int)Session["testNum"];
+            Session["testNum"] = null;
             testService ts = new testService();
             return ts.GetTestById(testNum);
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+            Response.Redirect("Homepage.aspx");
         }
     }
 }

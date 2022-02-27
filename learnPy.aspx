@@ -19,6 +19,7 @@
             <li><asp:HyperLink CssClass="bttn1" ID="infoUpdate" href="updateInfo.aspx" runat="server">Update User Info</asp:HyperLink></li>
             <li><asp:HyperLink CssClass="bttn1" ID="learnPython" href="learnPy.aspx" runat="server">Courses</asp:HyperLink></li>
             <li><asp:HyperLink CssClass="bttn1" ID="tests" href="showTests.aspx" runat="server">Available Tests</asp:HyperLink></li>
+            <li><asp:HyperLink CssClass="bttn1" ID="showDonetests" href="allTests.aspx" runat="server">Completed Tests</asp:HyperLink></li>
             <li style="float:right"><asp:Label ID="hello" CssClass="greet" runat="server" Text=""></asp:Label></li>
         </ul>
         <br/>
@@ -28,14 +29,17 @@
         <p>Learn python!</p>
     </div>
     <form id="form1" runat="server">
-        <div>
-            <ul class="navbar">
-                <li><a class="active, navBttn" href="#home">Home</a></li>
-                <li><a class="navBttn" href="#news">News</a></li>
-                <li><a class="navBttn" href="#contact">Contact</a></li>
-                <li><a class="navBttn" href="#about">About</a></li>
-            </ul>
 
+        <div style="display:flex;justify-self:start;">
+            <div class="navdiv" style="width:280%;align-self:start">
+            
+                <ul class="navbar">
+                    <li><a class="active, navBttn" href="#home">Home</a></li>
+                    <li><a class="navBttn" href="#news">News</a></li>
+                    <li><a class="navBttn" href="#contact">Contact</a></li>
+                    <li><a class="navBttn" href="#about">About</a></li>
+                </ul>
+            </div>
         </div>
     </form>
     <footer id="foot1">

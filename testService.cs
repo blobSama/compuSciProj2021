@@ -161,13 +161,13 @@ namespace compuSciProj2021
             return dataset;
         }
 
-        public DataSet GetAllComplTests(int num)
+        public DataSet GetAllComplTests(string usrID)
         {
             DataSet dataset = new DataSet();
             try
             {
                 myConnection.Open();
-                string sSql = "select testSerialNum, testTime, grade, testedUserID from allTests";
+                string sSql = "select topics.subjNum, topics.subjName, tests.testTopic, tests.testNum, testSerialNum, testTime, grade, testedUserID from allTests, tests, topics where testSerialNum = testNum and testTopic = subjNum and testedUserId = '"+ usrID +"';";
                 OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
                 OleDbDataAdapter adapter = new OleDbDataAdapter();
                 adapter.SelectCommand = myCmd;
@@ -182,6 +182,25 @@ namespace compuSciProj2021
                 myConnection.Close();
             }
             return dataset;
+        }
+
+        public void insertTest(DateTime testTime, int grade, string id, int testNum)
+        {
+            try
+            {
+                myConnection.Open();
+                string sSql = "insert into allTests(testTime, grade, testSerialNum, testedUserId) values(#" + testTime+ "#, " + grade + ", " + testNum +", '" + id + "')";
+                OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
+                myCmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
         }
     }
 }

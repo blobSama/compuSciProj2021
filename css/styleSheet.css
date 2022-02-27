@@ -158,6 +158,9 @@ img {
     margin: 25px;
     text-align:left;
     color: greenyellow;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
 .lbl1 {
@@ -346,16 +349,14 @@ li {
 
 .navbar {
     list-style-type: none;
+    display:inline block;
     margin: 0;
     padding: 0;
-    width: 25%;
+    width: 8.2%;
     background-color: #f1f1f1;
-    position: fixed;
     height: 100%;
     overflow: auto;
-    grid-area: grid;
-    grid-column-start: 1;
-    grid-column-end: 2;
+    justify-self: start;
 }
 
 .navBttn {
@@ -384,8 +385,8 @@ navBttn:hover:not(.active) {
     border: 2px solid black;
 }
 
-.indatlstdiv {
-    
+.indatlstdiv2 {
+    padding: 5px;
 }
 
 .ddlDtaLst {
@@ -472,4 +473,20 @@ navBttn:hover:not(.active) {
     display:flex;
     align-items:center;
     width:490px;
+}
+
+#GridView1 {
+    background-color:aquamarine;
+}
+
+.navdiv {
+    grid-area: grid;
+    background-color: none;
+    text-size-adjust: auto;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    margin-bottom: 15px;
+    position: fixed;
+    left: 0;
+    width: 100%;
 }
