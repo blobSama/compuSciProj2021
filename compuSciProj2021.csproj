@@ -80,10 +80,16 @@
     <Content Include="script\projScript.js" />
     <Content Include="showTests.aspx" />
     <Content Include="signIn.aspx" />
+    <Content Include="temp.aspx" />
     <Content Include="testResults.aspx" />
     <Content Include="updateInfo.aspx" />
     <Content Include="usersData.aspx" />
     <Content Include="tests.aspx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\JobsService\jobsService.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +107,7 @@
     <Compile Include="allTests.aspx.designer.cs">
       <DependentUpon>allTests.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Application.cs" />
     <Compile Include="Connect.cs" />
     <Compile Include="Homepage.aspx.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
@@ -117,6 +124,11 @@
       <DependentUpon>learnPy.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -137,6 +149,13 @@
     </Compile>
     <Compile Include="signIn.aspx.designer.cs">
       <DependentUpon>signIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="temp.aspx.cs">
+      <DependentUpon>temp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="temp.aspx.designer.cs">
+      <DependentUpon>temp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Test.cs" />
     <Compile Include="testResults.aspx.cs">
@@ -171,9 +190,19 @@
     <Compile Include="tests.aspx.designer.cs">
       <DependentUpon>tests.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web References\JobsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Web References\JobsService\jobsService.wsdl" />
+    <Content Include="Web References\JobsService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -181,7 +210,25 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://localhost:44344/jobsService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\JobsService\</RelPath>
+      <UpdateFromURL>https://localhost:44344/jobsService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>compuSciProj2021_JobsService_jobsService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
