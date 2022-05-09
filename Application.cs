@@ -11,6 +11,7 @@ namespace compuSciProj2021
         private string workId;
         private string workplaceReply;
         private string cv;
+        private int offerNum;
 
         public Application()
         {
@@ -62,6 +63,17 @@ namespace compuSciProj2021
             set
             {
                 this.cv = value;
+            }
+        }
+        public int offerNumber
+        {
+            get
+            {
+                return this.offerNum;
+            }
+            set
+            {
+                this.offerNum = value;
             }
         }
     }

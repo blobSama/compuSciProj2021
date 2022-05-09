@@ -104,22 +104,19 @@
           <s:element minOccurs="0" maxOccurs="1" name="WorkId" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Reply" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Cv" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="offerNumber" type="s:int" />
         </s:sequence>
       </s:complexType>
       <s:element name="InsertAplctnResponse">
         <s:complexType />
       </s:element>
-      <s:element name="GetApplctns">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="w" type="tns:Workplace" />
-          </s:sequence>
-        </s:complexType>
+      <s:element name="GetCitis">
+        <s:complexType />
       </s:element>
-      <s:element name="GetApplctnsResponse">
+      <s:element name="GetCitisResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetApplctnsResult">
+            <s:element minOccurs="0" maxOccurs="1" name="GetCitisResult">
               <s:complexType>
                 <s:sequence>
                   <s:element ref="s:schema" />
@@ -129,6 +126,79 @@
             </s:element>
           </s:sequence>
         </s:complexType>
+      </s:element>
+      <s:element name="findwrkplce">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="u" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findwrkplceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="findwrkplceResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsrInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="u" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsrInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUsrInfoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WrkplceByOffr">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="offerNum" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WrkplceByOffrResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WrkplceByOffrResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRply">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="a" type="tns:Application" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRplyResponse">
+        <s:complexType />
       </s:element>
     </s:schema>
   </wsdl:types>
@@ -168,11 +238,35 @@
   <wsdl:message name="InsertAplctnSoapOut">
     <wsdl:part name="parameters" element="tns:InsertAplctnResponse" />
   </wsdl:message>
-  <wsdl:message name="GetApplctnsSoapIn">
-    <wsdl:part name="parameters" element="tns:GetApplctns" />
+  <wsdl:message name="GetCitisSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCitis" />
   </wsdl:message>
-  <wsdl:message name="GetApplctnsSoapOut">
-    <wsdl:part name="parameters" element="tns:GetApplctnsResponse" />
+  <wsdl:message name="GetCitisSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCitisResponse" />
+  </wsdl:message>
+  <wsdl:message name="findwrkplceSoapIn">
+    <wsdl:part name="parameters" element="tns:findwrkplce" />
+  </wsdl:message>
+  <wsdl:message name="findwrkplceSoapOut">
+    <wsdl:part name="parameters" element="tns:findwrkplceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUsrInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsrInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUsrInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsrInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="WrkplceByOffrSoapIn">
+    <wsdl:part name="parameters" element="tns:WrkplceByOffr" />
+  </wsdl:message>
+  <wsdl:message name="WrkplceByOffrSoapOut">
+    <wsdl:part name="parameters" element="tns:WrkplceByOffrResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRplySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateRply" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRplySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateRplyResponse" />
   </wsdl:message>
   <wsdl:portType name="jobsServiceSoap">
     <wsdl:operation name="HelloWorld">
@@ -199,9 +293,25 @@
       <wsdl:input message="tns:InsertAplctnSoapIn" />
       <wsdl:output message="tns:InsertAplctnSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetApplctns">
-      <wsdl:input message="tns:GetApplctnsSoapIn" />
-      <wsdl:output message="tns:GetApplctnsSoapOut" />
+    <wsdl:operation name="GetCitis">
+      <wsdl:input message="tns:GetCitisSoapIn" />
+      <wsdl:output message="tns:GetCitisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="findwrkplce">
+      <wsdl:input message="tns:findwrkplceSoapIn" />
+      <wsdl:output message="tns:findwrkplceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsrInfo">
+      <wsdl:input message="tns:GetUsrInfoSoapIn" />
+      <wsdl:output message="tns:GetUsrInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WrkplceByOffr">
+      <wsdl:input message="tns:WrkplceByOffrSoapIn" />
+      <wsdl:output message="tns:WrkplceByOffrSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRply">
+      <wsdl:input message="tns:UpdateRplySoapIn" />
+      <wsdl:output message="tns:UpdateRplySoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="jobsServiceSoap" type="tns:jobsServiceSoap">
@@ -260,8 +370,44 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetApplctns">
-      <soap:operation soapAction="http://tempuri.org/GetApplctns" style="document" />
+    <wsdl:operation name="GetCitis">
+      <soap:operation soapAction="http://tempuri.org/GetCitis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findwrkplce">
+      <soap:operation soapAction="http://tempuri.org/findwrkplce" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsrInfo">
+      <soap:operation soapAction="http://tempuri.org/GetUsrInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WrkplceByOffr">
+      <soap:operation soapAction="http://tempuri.org/WrkplceByOffr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRply">
+      <soap:operation soapAction="http://tempuri.org/UpdateRply" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -326,8 +472,44 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetApplctns">
-      <soap12:operation soapAction="http://tempuri.org/GetApplctns" style="document" />
+    <wsdl:operation name="GetCitis">
+      <soap12:operation soapAction="http://tempuri.org/GetCitis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findwrkplce">
+      <soap12:operation soapAction="http://tempuri.org/findwrkplce" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsrInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetUsrInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WrkplceByOffr">
+      <soap12:operation soapAction="http://tempuri.org/WrkplceByOffr" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRply">
+      <soap12:operation soapAction="http://tempuri.org/UpdateRply" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -75,12 +75,12 @@
     <Content Include="images\c-sharp-c-logo-02F17714BA-seeklogo.com.png" />
     <Content Include="images\istockphoto-1300397135-612x612.jpg" />
     <Content Include="images\wallpapersden.com_programming-coding-language_1920x1080.jpg" />
+    <Content Include="jobSignUp.aspx" />
     <Content Include="learnPy.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="script\projScript.js" />
     <Content Include="showTests.aspx" />
     <Content Include="signIn.aspx" />
-    <Content Include="temp.aspx" />
     <Content Include="testResults.aspx" />
     <Content Include="updateInfo.aspx" />
     <Content Include="usersData.aspx" />
@@ -116,6 +116,13 @@
     <Compile Include="Homepage.aspx.designer.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="jobSignUp.aspx.cs">
+      <DependentUpon>jobSignUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jobSignUp.aspx.designer.cs">
+      <DependentUpon>jobSignUp.aspx</DependentUpon>
+    </Compile>
     <Compile Include="learnPy.aspx.cs">
       <DependentUpon>learnPy.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -149,13 +156,6 @@
     </Compile>
     <Compile Include="signIn.aspx.designer.cs">
       <DependentUpon>signIn.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="temp.aspx.cs">
-      <DependentUpon>temp.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="temp.aspx.designer.cs">
-      <DependentUpon>temp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Test.cs" />
     <Compile Include="testResults.aspx.cs">
