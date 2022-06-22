@@ -20,6 +20,11 @@ namespace compuSciProj2021
             else
             {
                 hello.Text = "Hello, Guest";
+                userData.Visible = false;
+                infoUpdate.Visible = false;
+                tests.Visible = false;
+                showDonetests.Visible = false;
+                findJobs.Visible = false;
             }
         }
 
@@ -39,6 +44,8 @@ namespace compuSciProj2021
                 u.Addrs = ds.Tables[0].Rows[0][3].ToString();
                 u.Age = Int32.Parse(ds.Tables[0].Rows[0][5].ToString());
                 u.Manager = bool.Parse(ds.Tables[0].Rows[0][7].ToString());
+                u.CurTop = Convert.ToInt32(ds.Tables[0].Rows[0][8]);
+                u.CurSubTop = Convert.ToInt32(ds.Tables[0].Rows[0][9]);
                 Session["curUser"] = u;
                 Response.Redirect("Homepage.aspx");
             }

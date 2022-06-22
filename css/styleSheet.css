@@ -4,6 +4,12 @@
     grid-column-end: 3;
 }
 
+#form3 {
+    grid-area: grid;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
 #form2 {
     grid-area: grid;
     grid-column-start: 1;
@@ -144,11 +150,9 @@ img {
 }
 
 #regist {
-    display: grid;
     grid-area: grid;
     border-radius: 25px;
     border: 2px solid black;
-    text-align: center;
     grid-column-start: 2;
     grid-column-end: 3;
     background-image:url('../images/istockphoto-1300397135-612x612.jpg');
@@ -161,6 +165,32 @@ img {
     display:flex;
     flex-direction:column;
     align-items:center;
+}
+
+#registJobs {
+    grid-area: grid;
+    border-radius: 25px;
+    border: 2px solid black;
+    text-align: center;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    background-image: url('../images/istockphoto-1300397135-612x612.jpg');
+    background-repeat: no-repeat;
+    background-attachment: inherit;
+    background-size: cover;
+    margin: 25px;
+    margin-bottom:50px;
+    text-align: left;
+    color: greenyellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.infoText {
+    color: greenyellow;
+    margin:20px;
+    font-size:20px;
 }
 
 .lbl1 {
@@ -212,9 +242,43 @@ img {
 .in2 {
     width: 75%;
     height: 50px;
-    border:none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid red;
     background-color: aquamarine;
     outline: none;
+    resize: none;
+    overflow: hidden;
+}
+
+
+.inApply {
+    width: 75%;
+    height: 100px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid red;
+    /* background-image:url('../images/istockphoto-1300397135-612x612.jpg');*/
+    background-color: #16395F;
+    outline: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: ghostwhite;
+    resize:none;
+    overflow:hidden;
+}
+
+.cvLabel{
+    margin-top: 10px;
+}
+
+.hpLabel {
+    margin: 25px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-family: "Courier New", Courier, monospace;
 }
 
 #ftrs {
@@ -281,6 +345,21 @@ li {
 }
 
 .bttn1:hover {
+    background-color: white;
+    color: darkgoldenrod;
+}
+
+.bttn3 {
+    display:block;
+    background-color:#333;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border: none;
+}
+
+.bttn3:hover {
     background-color: white;
     color: darkgoldenrod;
 }
@@ -385,6 +464,15 @@ navBttn:hover:not(.active) {
     border: 2px solid black;
 }
 
+.datalistDiv1 {
+    margin: 30px;
+    background-color: aquamarine;
+    display: flex;
+    align-items: center;
+    border-radius: 25px;
+    border: 2px solid black;
+}
+
 .indatlstdiv2 {
     padding: 5px;
 }
@@ -394,6 +482,41 @@ navBttn:hover:not(.active) {
     font: "Courier New";
     background-color:#333;
     margin:5px;
+}
+
+.ddlAdd {
+    font: "Courier New";
+    text-align: left;
+    margin: 5px;
+    border-radius:25px;
+    border-color:greenyellow;
+    color:greenyellow;
+}
+
+.ddlBttnAdd {
+    display: inline;
+    text-align: center;
+    font: "Courier New";
+    background-image: url('../images/istockphoto-1300397135-612x612.jpg');
+    background-repeat: no-repeat;
+    background-attachment: inherit;
+    background-size: cover;
+    text-align: left;
+    border-radius: 25px;
+    border-color: greenyellow;
+    color: greenyellow;
+}
+
+.addDdl {
+    list-style-type: none;
+    color: greenyellow;
+    margin: 0;
+    padding: 0;
+    background-color:none;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    width: 490px;
 }
 
 .ddlBttn {
@@ -443,12 +566,29 @@ navBttn:hover:not(.active) {
     
 }
 
+.passImg {
+    margin-top: 15px;
+    Height:20px;
+    Width:20px;
+}
+
 .header {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
+}
+
+.dropDowns {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    background-color: #16395F;
+    display: flex;
+    align-items: center;
+    width: 490px;
+    border-radius:25px;
 }
 
 .brClass {
@@ -489,4 +629,18 @@ navBttn:hover:not(.active) {
     position: fixed;
     left: 0;
     width: 100%;
+}
+
+.ask {
+    grid-area: grid;
+    background-color: none;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    align-items:center;
+    display:flex;
+}
+
+.mySlides{
+    height: 400px;
+    width: 600px;
 }

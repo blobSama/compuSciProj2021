@@ -30,7 +30,8 @@
     </div>
     <br />
     <div id="title">
-        <p>Learn python!</p>
+        <p>Learn C#!</p>
+        <p>See your results</p>
     </div>
     <form id="form1" runat="server">
         <asp:DataList ID="DataList1" runat="server">
@@ -70,6 +71,15 @@
                             </td>
                             <td>
                                 <asp:Label ID="rightAns" runat="server" Text=""></asp:Label>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style1">
+                                <asp:Label ID="Label5" runat="server" Text="Because: "></asp:Label>
+                            </td>
+                            <td>
+                                <asp:Label ID="expln" runat="server" Text='<%# Eval("explanation") %>'></asp:Label>
                             </td>
                             <td>&nbsp;</td>
                         </tr>

@@ -68,16 +68,32 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.aspx" />
+    <Content Include="addOffer.aspx" />
     <Content Include="allTests.aspx" />
+    <Content Include="applyForJob.aspx" />
     <Content Include="App_Data\compuSciProj2021.2.accdb" />
     <Content Include="css\styleSheet.css" />
+    <Content Include="descriptAndDiff.aspx" />
+    <Content Include="faqs.aspx" />
     <Content Include="Homepage.aspx" />
     <Content Include="images\c-sharp-c-logo-02F17714BA-seeklogo.com.png" />
+    <Content Include="images\homepageImages\cSharp1.jpg" />
+    <Content Include="images\homepageImages\cSharp2.jpg" />
+    <Content Include="images\homepageImages\cSharp3.jpg" />
+    <Content Include="images\homepageImages\cSharp4.jpeg" />
+    <Content Include="images\hook-g8d63f63f2_640.png" />
     <Content Include="images\istockphoto-1300397135-612x612.jpg" />
     <Content Include="images\wallpapersden.com_programming-coding-language_1920x1080.jpg" />
+    <Content Include="InsertClass.aspx" />
+    <Content Include="insertTests.aspx" />
+    <Content Include="jobsForYou.aspx" />
     <Content Include="jobSignUp.aspx" />
     <Content Include="learnPy.aspx" />
+    <Content Include="qAnswer.aspx" />
+    <Content Include="qAsk.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="Replies.aspx" />
+    <Content Include="replyToApplication.aspx" />
     <Content Include="script\projScript.js" />
     <Content Include="showTests.aspx" />
     <Content Include="signIn.aspx" />
@@ -100,6 +116,13 @@
     <Compile Include="about.aspx.designer.cs">
       <DependentUpon>about.aspx</DependentUpon>
     </Compile>
+    <Compile Include="addOffer.aspx.cs">
+      <DependentUpon>addOffer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addOffer.aspx.designer.cs">
+      <DependentUpon>addOffer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="allTests.aspx.cs">
       <DependentUpon>allTests.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -108,13 +131,59 @@
       <DependentUpon>allTests.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application.cs" />
+    <Compile Include="applyForJob.aspx.cs">
+      <DependentUpon>applyForJob.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="applyForJob.aspx.designer.cs">
+      <DependentUpon>applyForJob.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Class.cs" />
+    <Compile Include="ClassService.cs" />
     <Compile Include="Connect.cs" />
+    <Compile Include="descriptAndDiff.aspx.cs">
+      <DependentUpon>descriptAndDiff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="descriptAndDiff.aspx.designer.cs">
+      <DependentUpon>descriptAndDiff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="faqs.aspx.cs">
+      <DependentUpon>faqs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="faqs.aspx.designer.cs">
+      <DependentUpon>faqs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fqnas.cs" />
+    <Compile Include="fqnasService.cs" />
     <Compile Include="Homepage.aspx.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Homepage.aspx.designer.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InsertClass.aspx.cs">
+      <DependentUpon>InsertClass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InsertClass.aspx.designer.cs">
+      <DependentUpon>InsertClass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="insertTests.aspx.cs">
+      <DependentUpon>insertTests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="insertTests.aspx.designer.cs">
+      <DependentUpon>insertTests.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jobsForYou.aspx.cs">
+      <DependentUpon>jobsForYou.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jobsForYou.aspx.designer.cs">
+      <DependentUpon>jobsForYou.aspx</DependentUpon>
     </Compile>
     <Compile Include="jobSignUp.aspx.cs">
       <DependentUpon>jobSignUp.aspx</DependentUpon>
@@ -136,12 +205,40 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="qAnswer.aspx.cs">
+      <DependentUpon>qAnswer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="qAnswer.aspx.designer.cs">
+      <DependentUpon>qAnswer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="qAsk.aspx.cs">
+      <DependentUpon>qAsk.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="qAsk.aspx.designer.cs">
+      <DependentUpon>qAsk.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Replies.aspx.cs">
+      <DependentUpon>Replies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Replies.aspx.designer.cs">
+      <DependentUpon>Replies.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="replyToApplication.aspx.cs">
+      <DependentUpon>replyToApplication.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="replyToApplication.aspx.designer.cs">
+      <DependentUpon>replyToApplication.aspx</DependentUpon>
     </Compile>
     <Compile Include="showTests.aspx.cs">
       <DependentUpon>showTests.aspx</DependentUpon>
@@ -199,10 +296,10 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Web References\JobsService\jobsService.wsdl" />
-    <Content Include="Web References\JobsService\Reference.map">
+    <None Include="Web References\JobsService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

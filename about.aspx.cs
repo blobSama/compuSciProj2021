@@ -14,10 +14,21 @@ namespace compuSciProj2021
             if (Session["curUser"] != null)
             {
                 hello.Text = "Hello, " + ((User)Session["curUser"]).Firstname;
+                usrSignIn.Visible = false;
+                usrRegister.Visible = false;
+                if (!(((User)Session["curUSer"]).Manager))
+                {
+                    userData.Visible = false;
+                }
             }
             else
             {
                 hello.Text = "Hello, Guest";
+                userData.Visible = false;
+                infoUpdate.Visible = false;
+                tests.Visible = false;
+                showDonetests.Visible = false;
+                findJobs.Visible = false;
             }
         }
     }

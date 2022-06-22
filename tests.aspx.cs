@@ -18,6 +18,12 @@ namespace compuSciProj2021
             if (Session["curUser"] != null)
             {
                 hello.Text = "Hello, " + ((User)Session["curUser"]).Firstname;
+                usrSignIn.Visible = false;
+                usrRegister.Visible = false;
+                if (!(((User)Session["curUSer"]).Manager))
+                {
+                    userData.Visible = false;
+                }
             }
             else
             {
@@ -47,7 +53,7 @@ namespace compuSciProj2021
         protected void SubmitAns_Click(object sender, EventArgs e)
         {
             testService ts = new testService();
-            int scorePer, score, right = 0, wrong = 0;
+            int scorePer, score, right = 0, wrong = 0, testNum = Convert.ToInt32(Session["testNum"]);
             DataSet tests = GetData();
             bool[] questions = new bool[tests.Tables[0].Rows.Count];
             string[] answers = new string[tests.Tables[0].Rows.Count];
@@ -56,16 +62,18 @@ namespace compuSciProj2021
             foreach (DataListItem item in DataList1.Items)
             {
                 int qNum = Convert.ToInt32(DataList1.DataKeys[item.ItemIndex]);
-                DataSet ds = ts.GetRghtAnsByQ(qNum);
+                DataSet ds = ts.GetRghtAnsByQ(qNum, testNum);
                 string rAns = ds.Tables[0].Rows[0][0].ToString();
                 rightAnswers[item.ItemIndex] = rAns;
                 int i = 0;
                 Label l = (Label)(item.FindControl("Label2"));
+                bool isChecked = false;
                 for (; i < 4; i++)
                 {
                     RadioButton r = (RadioButton)(item.FindControl((string)("answer" + (i + 1))));
                     if (r.Checked)
                     {
+                        isChecked = true;
                         if (r.Text.Equals(rAns))
                         {
                             questions[item.ItemIndex] = true;
@@ -78,7 +86,12 @@ namespace compuSciProj2021
                             wrong++;
                             answers[item.ItemIndex] = r.Text;
                         }
-                        
+                    }
+                    if(i == 3 && !isChecked)
+                    {
+                        questions[item.ItemIndex] = false;
+                        wrong++;
+                        answers[item.ItemIndex] = "No Answer Given.";
                     }
                 }
             }
@@ -96,7 +109,6 @@ namespace compuSciProj2021
             score = right * scorePer;
             DateTime testTime = new DateTime(endTest.Year, endTest.Month, endTest.Day, Convert.ToInt32(testhours), Convert.ToInt32(testMinutes), Convert.ToInt32(testSeconds));
             string id = ((User)Session["curUser"]).ID;
-            int testNum = Convert.ToInt32(Session["testNum"]);
             ts.insertTest(testTime, score, id, testNum);
             Session["qAnswered"] = questions;
             Session["selectedAns"] = answers;

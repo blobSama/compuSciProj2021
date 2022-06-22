@@ -20,6 +20,11 @@ namespace compuSciProj2021
             else
             {
                 hello.Text = "Hello, Guest";
+                userData.Visible = false;
+                infoUpdate.Visible = false;
+                tests.Visible = false;
+                showDonetests.Visible = false;
+                findJobs.Visible = false;
             }
         }
 

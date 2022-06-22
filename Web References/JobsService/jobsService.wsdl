@@ -15,19 +15,10 @@
       <s:element name="GetApplyingUsrs">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="w" type="tns:Workplace" />
+            <s:element minOccurs="0" maxOccurs="1" name="w" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="Workplace">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Addrs" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="City" type="s:int" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="GetApplyingUsrsResponse">
         <s:complexType>
           <s:sequence>
@@ -72,22 +63,16 @@
       <s:element name="InsertUsr">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="u" type="tns:User" />
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="addrs" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mailAdd" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="city" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="User">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="phoneNum" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Firstname" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Lastname" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Addrs" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="mAddrs" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="City" type="s:int" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="InsertUsrResponse">
         <s:complexType />
       </s:element>
@@ -130,7 +115,7 @@
       <s:element name="findwrkplce">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="u" type="tns:User" />
+            <s:element minOccurs="0" maxOccurs="1" name="u" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -151,7 +136,7 @@
       <s:element name="GetUsrInfo">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="u" type="tns:User" />
+            <s:element minOccurs="0" maxOccurs="1" name="uId" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -193,12 +178,159 @@
       <s:element name="UpdateRply">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="a" type="tns:Application" />
+            <s:element minOccurs="0" maxOccurs="1" name="reply" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="offerNumber" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="usrId" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="UpdateRplyResponse">
         <s:complexType />
+      </s:element>
+      <s:element name="isApplied">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="offerNum" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isAppliedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="isAppliedResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isAnswered">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="offerNum" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isAnsweredResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="isAnsweredResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReply">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="offerNum" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="usrId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReplyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReplyResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserReplies">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usrId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserRepliesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserRepliesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertOffer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="workId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="descript" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="uploadDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="city" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertOfferResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="accept">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="uId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="offerNum" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="acceptResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="IsAccepted">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="uId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="offerNum" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsAcceptedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsAcceptedResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Reject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="uId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="offerNumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RejectResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSortedJobs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="city" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="time" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSortedJobsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSortedJobsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
       </s:element>
     </s:schema>
   </wsdl:types>
@@ -268,6 +400,60 @@
   <wsdl:message name="UpdateRplySoapOut">
     <wsdl:part name="parameters" element="tns:UpdateRplyResponse" />
   </wsdl:message>
+  <wsdl:message name="isAppliedSoapIn">
+    <wsdl:part name="parameters" element="tns:isApplied" />
+  </wsdl:message>
+  <wsdl:message name="isAppliedSoapOut">
+    <wsdl:part name="parameters" element="tns:isAppliedResponse" />
+  </wsdl:message>
+  <wsdl:message name="isAnsweredSoapIn">
+    <wsdl:part name="parameters" element="tns:isAnswered" />
+  </wsdl:message>
+  <wsdl:message name="isAnsweredSoapOut">
+    <wsdl:part name="parameters" element="tns:isAnsweredResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReplySoapIn">
+    <wsdl:part name="parameters" element="tns:GetReply" />
+  </wsdl:message>
+  <wsdl:message name="GetReplySoapOut">
+    <wsdl:part name="parameters" element="tns:GetReplyResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserRepliesSoapIn">
+    <wsdl:part name="parameters" element="tns:UserReplies" />
+  </wsdl:message>
+  <wsdl:message name="UserRepliesSoapOut">
+    <wsdl:part name="parameters" element="tns:UserRepliesResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertOfferSoapIn">
+    <wsdl:part name="parameters" element="tns:insertOffer" />
+  </wsdl:message>
+  <wsdl:message name="insertOfferSoapOut">
+    <wsdl:part name="parameters" element="tns:insertOfferResponse" />
+  </wsdl:message>
+  <wsdl:message name="acceptSoapIn">
+    <wsdl:part name="parameters" element="tns:accept" />
+  </wsdl:message>
+  <wsdl:message name="acceptSoapOut">
+    <wsdl:part name="parameters" element="tns:acceptResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsAcceptedSoapIn">
+    <wsdl:part name="parameters" element="tns:IsAccepted" />
+  </wsdl:message>
+  <wsdl:message name="IsAcceptedSoapOut">
+    <wsdl:part name="parameters" element="tns:IsAcceptedResponse" />
+  </wsdl:message>
+  <wsdl:message name="RejectSoapIn">
+    <wsdl:part name="parameters" element="tns:Reject" />
+  </wsdl:message>
+  <wsdl:message name="RejectSoapOut">
+    <wsdl:part name="parameters" element="tns:RejectResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSortedJobsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSortedJobs" />
+  </wsdl:message>
+  <wsdl:message name="GetSortedJobsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSortedJobsResponse" />
+  </wsdl:message>
   <wsdl:portType name="jobsServiceSoap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -312,6 +498,42 @@
     <wsdl:operation name="UpdateRply">
       <wsdl:input message="tns:UpdateRplySoapIn" />
       <wsdl:output message="tns:UpdateRplySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isApplied">
+      <wsdl:input message="tns:isAppliedSoapIn" />
+      <wsdl:output message="tns:isAppliedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isAnswered">
+      <wsdl:input message="tns:isAnsweredSoapIn" />
+      <wsdl:output message="tns:isAnsweredSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReply">
+      <wsdl:input message="tns:GetReplySoapIn" />
+      <wsdl:output message="tns:GetReplySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserReplies">
+      <wsdl:input message="tns:UserRepliesSoapIn" />
+      <wsdl:output message="tns:UserRepliesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertOffer">
+      <wsdl:input message="tns:insertOfferSoapIn" />
+      <wsdl:output message="tns:insertOfferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="accept">
+      <wsdl:input message="tns:acceptSoapIn" />
+      <wsdl:output message="tns:acceptSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsAccepted">
+      <wsdl:input message="tns:IsAcceptedSoapIn" />
+      <wsdl:output message="tns:IsAcceptedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Reject">
+      <wsdl:input message="tns:RejectSoapIn" />
+      <wsdl:output message="tns:RejectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSortedJobs">
+      <wsdl:input message="tns:GetSortedJobsSoapIn" />
+      <wsdl:output message="tns:GetSortedJobsSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="jobsServiceSoap" type="tns:jobsServiceSoap">
@@ -415,6 +637,87 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="isApplied">
+      <soap:operation soapAction="http://tempuri.org/isApplied" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAnswered">
+      <soap:operation soapAction="http://tempuri.org/isAnswered" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReply">
+      <soap:operation soapAction="http://tempuri.org/GetReply" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserReplies">
+      <soap:operation soapAction="http://tempuri.org/UserReplies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertOffer">
+      <soap:operation soapAction="http://tempuri.org/insertOffer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="accept">
+      <soap:operation soapAction="http://tempuri.org/accept" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsAccepted">
+      <soap:operation soapAction="http://tempuri.org/IsAccepted" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reject">
+      <soap:operation soapAction="http://tempuri.org/Reject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSortedJobs">
+      <soap:operation soapAction="http://tempuri.org/GetSortedJobs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="jobsServiceSoap12" type="tns:jobsServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -510,6 +813,87 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateRply">
       <soap12:operation soapAction="http://tempuri.org/UpdateRply" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isApplied">
+      <soap12:operation soapAction="http://tempuri.org/isApplied" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAnswered">
+      <soap12:operation soapAction="http://tempuri.org/isAnswered" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReply">
+      <soap12:operation soapAction="http://tempuri.org/GetReply" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserReplies">
+      <soap12:operation soapAction="http://tempuri.org/UserReplies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertOffer">
+      <soap12:operation soapAction="http://tempuri.org/insertOffer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="accept">
+      <soap12:operation soapAction="http://tempuri.org/accept" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsAccepted">
+      <soap12:operation soapAction="http://tempuri.org/IsAccepted" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reject">
+      <soap12:operation soapAction="http://tempuri.org/Reject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSortedJobs">
+      <soap12:operation soapAction="http://tempuri.org/GetSortedJobs" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

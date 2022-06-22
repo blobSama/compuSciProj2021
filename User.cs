@@ -16,6 +16,8 @@ namespace compuSciProj2021
         private bool isManager;
         private string pssWrdVrfy;
         private bool isActive;
+        private int curTop;
+        private int curSubTop;
 
         public User()
         {
@@ -127,6 +129,30 @@ namespace compuSciProj2021
             set
             {
                 this.isActive = value;
+            }
+        }
+
+        public int CurTop
+        {
+            get
+            {
+                return this.curTop;
+            }
+            set
+            {
+                this.curTop = value;
+            }
+        }
+
+        public int CurSubTop
+        {
+            get
+            {
+                return this.curSubTop;
+            }
+            set
+            {
+                this.curSubTop = value;
             }
         }
     }

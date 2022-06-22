@@ -15,6 +15,24 @@ namespace compuSciProj2021
     {
 
         /// <summary>
+        /// usrSignIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink usrSignIn;
+
+        /// <summary>
+        /// usrRegister control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink usrRegister;
+
+        /// <summary>
         /// userData control.
         /// </summary>
         /// <remarks>
@@ -60,6 +78,24 @@ namespace compuSciProj2021
         protected global::System.Web.UI.WebControls.HyperLink showDonetests;
 
         /// <summary>
+        /// fnqs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink fnqs;
+
+        /// <summary>
+        /// findJobs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink findJobs;
+
+        /// <summary>
         /// hello control.
         /// </summary>
         /// <remarks>
@@ -76,6 +112,15 @@ namespace compuSciProj2021
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+
+        /// <summary>
+        /// instructions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label instructions;
 
         /// <summary>
         /// phoneNum control.
@@ -130,5 +175,14 @@ namespace compuSciProj2021
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+
+        /// <summary>
+        /// submit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button submit;
     }
 }

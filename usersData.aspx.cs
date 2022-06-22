@@ -19,6 +19,8 @@ namespace compuSciProj2021
             if (Session["curUser"] != null && ((User)Session["curUser"]).Manager)
             {
                 hello.Text = "Hello, " + ((User)Session["curUser"]).Firstname;
+                usrSignIn.Visible = false;
+                usrRegister.Visible = false;
             }
             else
             {
@@ -47,7 +49,7 @@ namespace compuSciProj2021
                 IDWrng.Text = "Please enter valid id number.";
             }
         }
-
+        //babe i love you so much
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
@@ -71,6 +73,9 @@ namespace compuSciProj2021
             u.pssWrd = ((TextBox)(GridView1.Rows[e.RowIndex].Cells[5].Controls[0])).Text;
             u.Age = (int.Parse)(((TextBox)(GridView1.Rows[e.RowIndex].Cells[4].Controls[0])).Text);
             u.Active = (bool.Parse)(((TextBox)(GridView1.Rows[e.RowIndex].Cells[6].Controls[0])).Text);
+            u.Manager = (bool.Parse)(((TextBox)(GridView1.Rows[e.RowIndex].Cells[7].Controls[0])).Text);
+            u.CurTop = (int.Parse)(((TextBox)(GridView1.Rows[e.RowIndex].Cells[8].Controls[0])).Text);
+            u.CurSubTop = (int.Parse)(((TextBox)(GridView1.Rows[e.RowIndex].Cells[9].Controls[0])).Text);
             userService us = new userService();
             us.UpdateUser(u);
             GridView1.EditIndex = -1;

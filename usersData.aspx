@@ -11,20 +11,23 @@
     <div id="header">
         <ul class="header">
             <li><a class="bttn1" href="Homepage.aspx">Home Page</a></li>
-            <li><a class="bttn1" href="signIn.aspx">Sign In</a></li>
-            <li><a class="bttn1" href="Register.aspx">Register</a></li>
+            <li><asp:HyperLink CssClass="bttn1" ID="usrSignIn" href="signIn.aspx" runat="server">Sign In</asp:HyperLink></li>
+            <li><asp:HyperLink CssClass="bttn1" ID="usrRegister" href="Register.aspx" runat="server">Register</asp:HyperLink></li>
             <li><asp:HyperLink CssClass="bttn1" ID="userData" href="usersData.aspx" runat="server">Users Data</asp:HyperLink></li>
             <li><a class="bttn1" href="about.aspx">About Us</a></li>
             <li><asp:HyperLink CssClass="bttn1" ID="infoUpdate" href="updateInfo.aspx" runat="server">Update User Info</asp:HyperLink></li>
             <li><asp:HyperLink CssClass="bttn1" ID="learnPython" href="learnPy.aspx" runat="server">Courses</asp:HyperLink></li>
             <li><asp:HyperLink CssClass="bttn1" ID="tests" href="showTests.aspx" runat="server">Available Tests</asp:HyperLink></li>
             <li><asp:HyperLink CssClass="bttn1" ID="showDonetests" href="allTests.aspx" runat="server">Completed Tests</asp:HyperLink></li>
+            <li><asp:HyperLink CssClass="bttn1" ID="fnqs" NavigateUrl="faqs.aspx" runat="server">FAQ's</asp:HyperLink></li>
+            <li><asp:HyperLink CssClass="bttn1" ID="findJobs" href="jobsForYou.aspx" runat="server">Find A Job!</asp:HyperLink></li>
             <li style="float:right"><asp:Label ID="hello" CssClass="greet" runat="server" Text=""></asp:Label></li>
         </ul>
         <br/>
     </div>               
 	<div id="title">
-		<p>Learn python!</p>
+		<p>Learn C#!</p>
+        <p>Change user's data</p>
 	</div>
 	<div class="wtchData">
 		<form class="wtchData" id="form1" runat="server">
@@ -41,6 +44,9 @@
                         <asp:BoundField DataField="age" HeaderText="User Age" />
                         <asp:BoundField DataField="password" HeaderText="User Password" />
                         <asp:BoundField DataField="isActive" HeaderText="Active User" />
+                        <asp:BoundField DataField="isManager" HeaderText="Is A Manager" SortExpression="isManager" />
+                        <asp:BoundField DataField="currTop" HeaderText="Latest Subject" SortExpression="currTop" />
+                        <asp:BoundField DataField="currSubTop" HeaderText="Latest Sub Topic" SortExpression="currSubTop" />
                         <asp:TemplateField>  
                             <ItemTemplate>  
                                 <asp:Button ID="btn_Edit" CssClass="bttn2" runat="server" Text="Edit" CommandName="Edit" />  

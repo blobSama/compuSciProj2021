@@ -222,5 +222,58 @@ namespace compuSciProj2021
             }
             return ok;
         }
+
+        public static bool testExists(int testNum)
+        {
+            bool ok = false;
+            testService ts = new testService();
+            DataSet ds = ts.getTestByNum(testNum);
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                ok = true;
+            }
+            return ok;
+        }
+
+        public static bool TopicVald(string topic)
+        {
+            bool ok = false;
+            ClassService cs = new ClassService();
+            DataSet ds = cs.getSubjects();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                if (topic.Equals(dr[1]))
+                {
+                    ok = true;
+                }
+            }
+            return ok;
+        }
+
+        public static int testTopByName(string topic)
+        {
+            int subjNum = 0;
+            ClassService cs = new ClassService();
+            DataSet ds = cs.getSubjects();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                if (topic.Equals(dr[1].ToString()))
+                {
+                    subjNum = Convert.ToInt32(dr[0].ToString());
+                }
+            }
+            return subjNum;
+        }
+
+        public static bool TestVald(Test t)
+        {
+            bool ok = true;
+            bool actOk = t.Difficulty.Equals("Easy") || t.Difficulty.Equals("Medium") || t.Difficulty.Equals("Hard");
+            if (!actOk)
+            {
+                ok = false;
+            }
+            return ok;
+        }
     }
 }

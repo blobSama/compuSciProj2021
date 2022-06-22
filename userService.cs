@@ -22,7 +22,7 @@ namespace compuSciProj2021
             try
             {
                 myConnection.Open();
-                string sSql = "INSERT INTO [Users](ID, firstName, [lastName], [mailAdrs], [age], [password], isActive) VALUES('" + u.ID + "', '" + u.Firstname + "', '" + u.Lastname + "', '" + u.Addrs + "', " + u.Age + ", '" + u.pssWrd + "', True)";
+                string sSql = "INSERT INTO [Users](ID, firstName, [lastName], [mailAdrs], [age], [password], isActive, currTop, currSubTop) VALUES('" + u.ID + "', '" + u.Firstname + "', '" + u.Lastname + "', '" + u.Addrs + "', " + u.Age + ", '" + u.pssWrd + "', True, 1, 1)";
                 OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
                 myCmd.ExecuteNonQuery();
             }
@@ -130,7 +130,7 @@ namespace compuSciProj2021
             try
             {
                 myConnection.Open();
-                string sSql = "UPDATE Users SET firstName = '" + u.Firstname + "', [lastName] = '" + u.Lastname + "', [mailAdrs] = '" + u.Addrs + "', [age] = " + u.Age + ", [password] = '" + u.pssWrd + "', [isActive] = " + u.Active + " WHERE ID = '" + u.ID + "'";
+                string sSql = "UPDATE Users SET firstName = '" + u.Firstname + "', [lastName] = '" + u.Lastname + "', [mailAdrs] = '" + u.Addrs + "', [age] = " + u.Age + ", [password] = '" + u.pssWrd + "', [isActive] = " + u.Active + ", isManager = " + u.Manager + ", currTop = " + u.CurTop + ", currSubTop = " + u.CurSubTop + " WHERE ID = '" + u.ID + "'";
                 OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
                 myCmd.ExecuteNonQuery();
             }

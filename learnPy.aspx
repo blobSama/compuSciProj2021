@@ -12,33 +12,51 @@
     <div id="header">
         <ul class="header">
             <li><a class="bttn1" href="Homepage.aspx">Home Page</a></li>
-            <li><a class="bttn1" href="signIn.aspx">Sign In</a></li>
-            <li><a class="bttn1" href="Register.aspx">Register</a></li>
+            <li><asp:HyperLink CssClass="bttn1" ID="usrSignIn" href="signIn.aspx" runat="server">Sign In</asp:HyperLink></li>
+            <li><asp:HyperLink CssClass="bttn1" ID="usrRegister" href="Register.aspx" runat="server">Register</asp:HyperLink></li>
             <li><asp:HyperLink CssClass="bttn1" ID="userData" href="usersData.aspx" runat="server">Users Data</asp:HyperLink></li>
             <li><a class="bttn1" href="about.aspx">About Us</a></li>
             <li><asp:HyperLink CssClass="bttn1" ID="infoUpdate" href="updateInfo.aspx" runat="server">Update User Info</asp:HyperLink></li>
             <li><asp:HyperLink CssClass="bttn1" ID="learnPython" href="learnPy.aspx" runat="server">Courses</asp:HyperLink></li>
             <li><asp:HyperLink CssClass="bttn1" ID="tests" href="showTests.aspx" runat="server">Available Tests</asp:HyperLink></li>
             <li><asp:HyperLink CssClass="bttn1" ID="showDonetests" href="allTests.aspx" runat="server">Completed Tests</asp:HyperLink></li>
+            <li><asp:HyperLink CssClass="bttn1" ID="fnqs" NavigateUrl="faqs.aspx" runat="server">FAQ's</asp:HyperLink></li>
+            <li><asp:HyperLink CssClass="bttn1" ID="findJobs" href="jobsForYou.aspx" runat="server">Find A Job!</asp:HyperLink></li>
             <li style="float:right"><asp:Label ID="hello" CssClass="greet" runat="server" Text=""></asp:Label></li>
         </ul>
         <br/>
     </div>
     <br />
     <div id="title">
-        <p>Learn python!</p>
+        <p>Learn C#!</p>
+        <p>Pick what you want to learn today!</p>
     </div>
-    <form id="form1" runat="server">
-
-        <div style="display:flex;justify-self:start;">
-            <div class="navdiv" style="width:280%;align-self:start">
-            
-                <ul class="navbar">
-                    <li><a class="active, navBttn" href="#home">Home</a></li>
-                    <li><a class="navBttn" href="#news">News</a></li>
-                    <li><a class="navBttn" href="#contact">Contact</a></li>
-                    <li><a class="navBttn" href="#about">About</a></li>
-                </ul>
+    <form id="form2" runat="server">
+        <div>
+            <ul class="dropDowns">
+                <li>
+                    <asp:DropDownList CssClass="ddlAdd" ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="true">
+                    </asp:DropDownList>
+                </li>
+                <li>
+                    <asp:DropDownList CssClass="ddlAdd" ID="DropDownList2" runat="server">
+                    </asp:DropDownList>
+                </li>
+                <li>
+                    <asp:Button runat="server" Text="Choose Class" ID="classChoose" CssClass ="ddlBttnAdd" OnClick="classChoose_Click" />
+                </li>
+            </ul><br /><br /><br />
+            <div class="datalistDiv" runat="server">
+                <div class="indatlstdiv" runat="server"><br />
+                    <asp:Label ID="classText" CssClass="datalistLbl" runat="server" Text=""></asp:Label><br />
+                    <asp:Label Visible="false" ID="question" CssClass="datalistLbl" runat="server" Text=""></asp:Label><br />
+                    <asp:TextBox  Visible="false" ID="answer" CssClass="in2" runat="server"></asp:TextBox><br />
+                    <asp:Button Visible="false" ID="checkAns" CssClass="sub1" runat="server" Text="Check Your Answer!" OnClick="checkAns_Click" /><br />
+                    <asp:Label ID="rightOrWrong" CssClass="datalistLbl" runat="server" Text=""></asp:Label>
+                    <br /><br />
+                    <asp:Label Visible="false" ID="uploadTime" CssClass="datalistLbl" runat="server" Text="Uploaded On: "></asp:Label><br /><br />
+                    <asp:Button CssClass="sub1" ID="insertClass" runat="server" Text="Insert New Classes" OnClick="insertClass_Click" />
+                </div>
             </div>
         </div>
     </form>

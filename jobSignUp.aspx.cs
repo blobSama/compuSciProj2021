@@ -16,6 +16,12 @@ namespace compuSciProj2021
             if (Session["curUser"] != null)
             {
                 hello.Text = "Hello, " + ((User)Session["curUser"]).Firstname;
+                usrSignIn.Visible = false;
+                usrRegister.Visible = false;
+                if (!(((User)Session["curUSer"]).Manager))
+                {
+                    userData.Visible = false;
+                }
             }
             else
             {
@@ -34,6 +40,20 @@ namespace compuSciProj2021
             DropDownList1.DataTextField = "cityName";
             DropDownList1.DataValueField = "cityNum";
             DropDownList1.DataBind();
+        }
+
+        protected void submit_Click(object sender, EventArgs e)
+        {
+            JobsService.jobsService js = new JobsService.jobsService();
+            string id = ((User)Session["curUSer"]).ID;
+            string fName = ((User)Session["curUSer"]).Firstname;
+            string lName = ((User)Session["curUSer"]).Lastname;
+            string addrs = usrAddrs.Text;
+            string phone = usrPhone.Text;
+            string mailAdd = ((User)Session["curUSer"]).Addrs;
+            int city = int.Parse(DropDownList1.SelectedValue);
+            js.InsertUsr(id, fName, lName, addrs, phone, mailAdd, city);
+            Response.Redirect("jobsForYou.aspx");
         }
     }
 }

@@ -16,13 +16,13 @@ namespace compuSciProj2021
             myConnection = new OleDbConnection(connectionString);
         }
 
-        public DataSet GetTests()
+        public DataSet GetTestsUser(int curTop)
         {
             DataSet dataset = new DataSet();
             try
             {
                 myConnection.Open();
-                string sSql = "select difficulty, subjName, subjNum, testTopic, testNum from tests, topics where subjNum = testTopic";
+                string sSql = "select difficulty, subjName, subjNum, testTopic, testNum, descript from tests, topics where subjNum = testTopic AND subjSerialNum BETWEEN 1 AND " + curTop + " AND isActiveTest = true;";
                 OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
                 OleDbDataAdapter adapter = new OleDbDataAdapter();
                 adapter.SelectCommand = myCmd;
@@ -78,26 +78,9 @@ namespace compuSciProj2021
                     default: break;
                 }
 
-                switch (topic)
+                if(topic != 0)
                 {
-                    case 0: break;
-
-                    case 1:
-                        sSql += " AND subjNum = 1";
-                        break;
-                    case 2:
-                        sSql += " AND subjNum = 2";
-                        break;
-                    case 3:
-                        sSql += " AND subjNum = 3";
-                        break;
-                    case 4:
-                        sSql += " AND subjNum = 4";
-                        break;
-                    case 5:
-                        sSql += " AND subjNum = 5";
-                        break;
-                    default: break;
+                    sSql += " AND subjSerialNum = " + topic + ";";
                 }
                 OleDbCommand cmd = new OleDbCommand(sSql, myConnection);
                 OleDbDataAdapter adapter = new OleDbDataAdapter();
@@ -121,7 +104,7 @@ namespace compuSciProj2021
             try
             {
                 myConnection.Open();
-                string sSql = "select questNum, question, answer1, answer2, answer3, answer4, rightAns from testQuestions where testNumber = " + num + "";
+                string sSql = "select questNum, question, answer1, answer2, answer3, answer4, rightAns, explanation from testQuestions where testNumber = " + num + "";
                 OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
                 OleDbDataAdapter adapter = new OleDbDataAdapter();
                 adapter.SelectCommand = myCmd;
@@ -138,13 +121,13 @@ namespace compuSciProj2021
             return dataset;
         }
 
-        public DataSet GetRghtAnsByQ(int num)
+        public DataSet GetRghtAnsByQ(int num, int testNum)
         {
             DataSet dataset = new DataSet();
             try
             {
                 myConnection.Open();
-                string sSql = "select rightAns from testQuestions where questNum = " + num + "";
+                string sSql = "SELECT rightAns FROM testQuestions WHERE questNum = " + num + " AND testNumber = " + testNum + ";";
                 OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
                 OleDbDataAdapter adapter = new OleDbDataAdapter();
                 adapter.SelectCommand = myCmd;
@@ -184,6 +167,29 @@ namespace compuSciProj2021
             return dataset;
         }
 
+        public DataSet GetAllComplTestsM()
+        {
+            DataSet dataset = new DataSet();
+            try
+            {
+                myConnection.Open();
+                string sSql = "SELECT topics.subjNum, topics.subjName, tests.testTopic, tests.testNum, testSerialNum, testTime, grade, testedUserID, firstName, lastName FROM allTests, tests, topics,Users WHERE testSerialNum = testNum and testTopic = subjNum and testedUserId = ID;";
+                OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
+                OleDbDataAdapter adapter = new OleDbDataAdapter();
+                adapter.SelectCommand = myCmd;
+                adapter.Fill(dataset, "tests");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return dataset;
+        }
+
         public void insertTest(DateTime testTime, int grade, string id, int testNum)
         {
             try
@@ -201,6 +207,277 @@ namespace compuSciProj2021
             {
                 myConnection.Close();
             }
+        }
+
+        public DataSet getSubjects(int curTop)
+        {
+            DataSet dataset = new DataSet();
+            try
+            {
+                myConnection.Open();
+                string sSql = "select * from topics WHERE subjSerialNum BETWEEN 1 AND " + curTop + " ORDER BY subjSerialNum;";
+                OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
+                OleDbDataAdapter adapter = new OleDbDataAdapter();
+                adapter.SelectCommand = myCmd;
+                adapter.Fill(dataset, "topics");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return dataset;
+        }
+
+        public DataSet getSubjectsGuest()
+        {
+            DataSet dataset = new DataSet();
+            try
+            {
+                myConnection.Open();
+                string sSql = "select * from topics ORDER BY subjSerialNum;";
+                OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
+                OleDbDataAdapter adapter = new OleDbDataAdapter();
+                adapter.SelectCommand = myCmd;
+                adapter.Fill(dataset, "topics");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return dataset;
+        }
+
+        public int CreateTest(int num)
+        {
+            DateTime now = DateTime.Now;
+            try
+            {
+                myConnection.Open();
+                string sSql = "insert into tests(testTopic, uploadDate) values(" + num + ", #" + now + "#)";
+                OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
+                myCmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+
+            int testNum = 0;
+            DataSet dataset = new DataSet();
+            long min = long.MaxValue;
+            try
+            {
+                myConnection.Open();
+                string sSql = "select * from tests;";
+                OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
+                OleDbDataAdapter adapter = new OleDbDataAdapter();
+                adapter.SelectCommand = myCmd;
+                adapter.Fill(dataset, "tests");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            foreach (DataRow dr in dataset.Tables[0].Rows)
+            {
+                if (Math.Abs(((DateTime)dr[1]).Ticks - now.Ticks) < min)
+                {
+                    Math.Abs(((DateTime)dr[1]).Ticks - now.Ticks);
+                    testNum = Convert.ToInt32(dr[0]);
+                }
+            }
+            return testNum;
+        }
+
+        public void insertQuestion(int qNum, int testNum, string quest, string ans1, string ans2, string ans3, string ans4, string realAns, string expln)
+        {
+            try
+            {
+                myConnection.Open();
+                string sSql = "insert into testQuestions(questNum, testNumber, question, answer1, answer2, answer3, answer4, rightAns, explanation) values(" + qNum + ", " + testNum  + ", '" + quest + "', '" + ans1 + "', '" + ans2 + "', '" + ans3 + "', '" + ans4 + "', '" + realAns + "', '" + expln + "')";
+                OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
+                myCmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+        }
+
+        public void insertDiffAndDesc(string diff, string desc, int num)
+        {
+            try
+            {
+                myConnection.Open();
+                string sSql = "UPDATE tests SET difficulty = '" + diff + "', descript = '" + desc + "' WHERE testNum = " + num + ";";
+                OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
+                myCmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+        }
+
+        public void makeRelevant(int num)
+        {
+            try
+            {
+                myConnection.Open();
+                string sSql = "UPDATE tests SET isActiveTest = true WHERE testNum = " + num + ";";
+                OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
+                myCmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+        }
+
+        public DataSet getTestByNum(int testNum)
+        {
+            DataSet dataset = new DataSet();
+            try
+            {
+                myConnection.Open();
+                string sSql = "select * from tests WHERE testNum = " + testNum + ";";
+                OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
+                OleDbDataAdapter adapter = new OleDbDataAdapter();
+                adapter.SelectCommand = myCmd;
+                adapter.Fill(dataset, "tests");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return dataset;
+        }
+
+        public DataSet GetTests()
+        {
+            DataSet dataset = new DataSet();
+            try
+            {
+                myConnection.Open();
+                string sSql = "select testNum, uploadDate, isActiveTest, subjName, difficulty, descript from tests, topics WHERE testTopic = subjNum;";
+                OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
+                OleDbDataAdapter adapter = new OleDbDataAdapter();
+                adapter.SelectCommand = myCmd;
+                adapter.Fill(dataset, "tests");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return dataset;
+        }
+
+        public void deleteTest(int num)
+        {
+            try
+            {
+                myConnection.Open();
+                string sSql = "DELETE FROM tests WHERE testNum = " + num + ";";
+                OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
+                myCmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+        }
+
+        public void updateTest(Test t)
+        {
+            try
+            {
+                myConnection.Open();
+                string sSql = "UPDATE tests SET testTopic = " + t.TestTopic + ", isActiveTest = " + t.IsActive + ", uploadDate = #" + t.UploadDate + "#, difficulty = '" + t.Difficulty + "', descript = '" + t.Descript + "' WHERE testNum = " + t.TestNum + ";";
+                OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
+                myCmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+        }
+
+        public bool hasPassed(string usrId, int testSerial)
+        {
+            bool pass = false;
+            DataSet dataset = new DataSet();
+            try
+            {
+                myConnection.Open();
+                string sSql = "select * FROM allTests WHERE testedUserId = '" + usrId + "' AND testSerialNum = " + testSerial + ";";
+                OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
+                OleDbDataAdapter adapter = new OleDbDataAdapter();
+                adapter.SelectCommand = myCmd;
+                adapter.Fill(dataset, "allTests");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            if(dataset.Tables[0].Rows.Count != 0)
+            {
+                foreach (DataRow dr in dataset.Tables[0].Rows)
+                {
+                    if(Convert.ToInt32(dr[3]) >= 75)
+                    {
+                        pass = true;
+                    }
+                }
+            }
+            return pass;
         }
     }
 }

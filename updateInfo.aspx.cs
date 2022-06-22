@@ -14,6 +14,12 @@ namespace compuSciProj2021
             if (Session["curUser"] != null)
             {
                 hello.Text = "Hello, " + ((User)Session["curUser"]).Firstname;
+                usrSignIn.Visible = false;
+                usrRegister.Visible = false;
+                if (!(((User)Session["curUSer"]).Manager))
+                {
+                    userData.Visible = false;
+                }
                 PopulateLabels();
                 passwordChnge.Attributes["type"] = "password";
                 passwordVrfy.Attributes["type"] = "password";

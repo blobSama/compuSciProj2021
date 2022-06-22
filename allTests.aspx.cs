@@ -16,7 +16,19 @@ namespace compuSciProj2021
             if (Session["curUser"] != null)
             {
                 hello.Text = "Hello, " + ((User)Session["curUser"]).Firstname;
-                populateDataList();
+                usrSignIn.Visible = false;
+                usrRegister.Visible = false;
+                if (!(((User)Session["curUSer"]).Manager))
+                {
+                    userData.Visible = false;
+                    DataList2.Visible = false;
+                    populateDataListU();
+                }
+                else
+                {
+                    DataList1.Visible = false;
+                    populateDataListM();
+                }
             }
             else
             {
@@ -24,7 +36,7 @@ namespace compuSciProj2021
             }
         }
 
-        public void populateDataList()
+        public void populateDataListU()
         {
             DataList1.DataSource = GetData();
             DataList1.DataBind();
@@ -35,6 +47,23 @@ namespace compuSciProj2021
             string userdId = ((User)Session["curUser"]).ID;
             testService ts = new testService();
             return ts.GetAllComplTests(userdId);
+        }
+
+        public void populateDataListM()
+        {
+            DataList2.DataSource = GetDataM();
+            DataList2.DataBind();
+        }
+
+        private DataSet GetDataM()
+        {
+            testService ts = new testService();
+            return ts.GetAllComplTestsM();
+        }
+
+        protected void dis_Click(object sender, EventArgs e)
+        {
+            Session["curUser"] = null;
         }
     }
 }

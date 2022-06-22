@@ -52,6 +52,24 @@ namespace compuSciProj2021.JobsService {
         
         private System.Threading.SendOrPostCallback UpdateRplyOperationCompleted;
         
+        private System.Threading.SendOrPostCallback isAppliedOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback isAnsweredOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetReplyOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UserRepliesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback insertOfferOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback acceptOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback IsAcceptedOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RejectOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetSortedJobsOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -124,6 +142,33 @@ namespace compuSciProj2021.JobsService {
         public event UpdateRplyCompletedEventHandler UpdateRplyCompleted;
         
         /// <remarks/>
+        public event isAppliedCompletedEventHandler isAppliedCompleted;
+        
+        /// <remarks/>
+        public event isAnsweredCompletedEventHandler isAnsweredCompleted;
+        
+        /// <remarks/>
+        public event GetReplyCompletedEventHandler GetReplyCompleted;
+        
+        /// <remarks/>
+        public event UserRepliesCompletedEventHandler UserRepliesCompleted;
+        
+        /// <remarks/>
+        public event insertOfferCompletedEventHandler insertOfferCompleted;
+        
+        /// <remarks/>
+        public event acceptCompletedEventHandler acceptCompleted;
+        
+        /// <remarks/>
+        public event IsAcceptedCompletedEventHandler IsAcceptedCompleted;
+        
+        /// <remarks/>
+        public event RejectCompletedEventHandler RejectCompleted;
+        
+        /// <remarks/>
+        public event GetSortedJobsCompletedEventHandler GetSortedJobsCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string HelloWorld() {
             object[] results = this.Invoke("HelloWorld", new object[0]);
@@ -152,19 +197,19 @@ namespace compuSciProj2021.JobsService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetApplyingUsrs", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet GetApplyingUsrs(Workplace w) {
+        public System.Data.DataSet GetApplyingUsrs(string w) {
             object[] results = this.Invoke("GetApplyingUsrs", new object[] {
                         w});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void GetApplyingUsrsAsync(Workplace w) {
+        public void GetApplyingUsrsAsync(string w) {
             this.GetApplyingUsrsAsync(w, null);
         }
         
         /// <remarks/>
-        public void GetApplyingUsrsAsync(Workplace w, object userState) {
+        public void GetApplyingUsrsAsync(string w, object userState) {
             if ((this.GetApplyingUsrsOperationCompleted == null)) {
                 this.GetApplyingUsrsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetApplyingUsrsOperationCompleted);
             }
@@ -236,23 +281,35 @@ namespace compuSciProj2021.JobsService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertUsr", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void InsertUsr(User u) {
+        public void InsertUsr(string id, string fName, string lName, string addrs, string phone, string mailAdd, int city) {
             this.Invoke("InsertUsr", new object[] {
-                        u});
+                        id,
+                        fName,
+                        lName,
+                        addrs,
+                        phone,
+                        mailAdd,
+                        city});
         }
         
         /// <remarks/>
-        public void InsertUsrAsync(User u) {
-            this.InsertUsrAsync(u, null);
+        public void InsertUsrAsync(string id, string fName, string lName, string addrs, string phone, string mailAdd, int city) {
+            this.InsertUsrAsync(id, fName, lName, addrs, phone, mailAdd, city, null);
         }
         
         /// <remarks/>
-        public void InsertUsrAsync(User u, object userState) {
+        public void InsertUsrAsync(string id, string fName, string lName, string addrs, string phone, string mailAdd, int city, object userState) {
             if ((this.InsertUsrOperationCompleted == null)) {
                 this.InsertUsrOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertUsrOperationCompleted);
             }
             this.InvokeAsync("InsertUsr", new object[] {
-                        u}, this.InsertUsrOperationCompleted, userState);
+                        id,
+                        fName,
+                        lName,
+                        addrs,
+                        phone,
+                        mailAdd,
+                        city}, this.InsertUsrOperationCompleted, userState);
         }
         
         private void OnInsertUsrOperationCompleted(object arg) {
@@ -319,19 +376,19 @@ namespace compuSciProj2021.JobsService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/findwrkplce", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet findwrkplce(User u) {
+        public System.Data.DataSet findwrkplce(string u) {
             object[] results = this.Invoke("findwrkplce", new object[] {
                         u});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void findwrkplceAsync(User u) {
+        public void findwrkplceAsync(string u) {
             this.findwrkplceAsync(u, null);
         }
         
         /// <remarks/>
-        public void findwrkplceAsync(User u, object userState) {
+        public void findwrkplceAsync(string u, object userState) {
             if ((this.findwrkplceOperationCompleted == null)) {
                 this.findwrkplceOperationCompleted = new System.Threading.SendOrPostCallback(this.OnfindwrkplceOperationCompleted);
             }
@@ -348,24 +405,24 @@ namespace compuSciProj2021.JobsService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetUsrInfo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet GetUsrInfo(User u) {
+        public System.Data.DataSet GetUsrInfo(string uId) {
             object[] results = this.Invoke("GetUsrInfo", new object[] {
-                        u});
+                        uId});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void GetUsrInfoAsync(User u) {
-            this.GetUsrInfoAsync(u, null);
+        public void GetUsrInfoAsync(string uId) {
+            this.GetUsrInfoAsync(uId, null);
         }
         
         /// <remarks/>
-        public void GetUsrInfoAsync(User u, object userState) {
+        public void GetUsrInfoAsync(string uId, object userState) {
             if ((this.GetUsrInfoOperationCompleted == null)) {
                 this.GetUsrInfoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUsrInfoOperationCompleted);
             }
             this.InvokeAsync("GetUsrInfo", new object[] {
-                        u}, this.GetUsrInfoOperationCompleted, userState);
+                        uId}, this.GetUsrInfoOperationCompleted, userState);
         }
         
         private void OnGetUsrInfoOperationCompleted(object arg) {
@@ -406,29 +463,311 @@ namespace compuSciProj2021.JobsService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateRply", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void UpdateRply(Application a) {
+        public void UpdateRply(string reply, int offerNumber, string usrId) {
             this.Invoke("UpdateRply", new object[] {
-                        a});
+                        reply,
+                        offerNumber,
+                        usrId});
         }
         
         /// <remarks/>
-        public void UpdateRplyAsync(Application a) {
-            this.UpdateRplyAsync(a, null);
+        public void UpdateRplyAsync(string reply, int offerNumber, string usrId) {
+            this.UpdateRplyAsync(reply, offerNumber, usrId, null);
         }
         
         /// <remarks/>
-        public void UpdateRplyAsync(Application a, object userState) {
+        public void UpdateRplyAsync(string reply, int offerNumber, string usrId, object userState) {
             if ((this.UpdateRplyOperationCompleted == null)) {
                 this.UpdateRplyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateRplyOperationCompleted);
             }
             this.InvokeAsync("UpdateRply", new object[] {
-                        a}, this.UpdateRplyOperationCompleted, userState);
+                        reply,
+                        offerNumber,
+                        usrId}, this.UpdateRplyOperationCompleted, userState);
         }
         
         private void OnUpdateRplyOperationCompleted(object arg) {
             if ((this.UpdateRplyCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.UpdateRplyCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/isApplied", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool isApplied(int offerNum, string id) {
+            object[] results = this.Invoke("isApplied", new object[] {
+                        offerNum,
+                        id});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void isAppliedAsync(int offerNum, string id) {
+            this.isAppliedAsync(offerNum, id, null);
+        }
+        
+        /// <remarks/>
+        public void isAppliedAsync(int offerNum, string id, object userState) {
+            if ((this.isAppliedOperationCompleted == null)) {
+                this.isAppliedOperationCompleted = new System.Threading.SendOrPostCallback(this.OnisAppliedOperationCompleted);
+            }
+            this.InvokeAsync("isApplied", new object[] {
+                        offerNum,
+                        id}, this.isAppliedOperationCompleted, userState);
+        }
+        
+        private void OnisAppliedOperationCompleted(object arg) {
+            if ((this.isAppliedCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.isAppliedCompleted(this, new isAppliedCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/isAnswered", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool isAnswered(int offerNum, string userId) {
+            object[] results = this.Invoke("isAnswered", new object[] {
+                        offerNum,
+                        userId});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void isAnsweredAsync(int offerNum, string userId) {
+            this.isAnsweredAsync(offerNum, userId, null);
+        }
+        
+        /// <remarks/>
+        public void isAnsweredAsync(int offerNum, string userId, object userState) {
+            if ((this.isAnsweredOperationCompleted == null)) {
+                this.isAnsweredOperationCompleted = new System.Threading.SendOrPostCallback(this.OnisAnsweredOperationCompleted);
+            }
+            this.InvokeAsync("isAnswered", new object[] {
+                        offerNum,
+                        userId}, this.isAnsweredOperationCompleted, userState);
+        }
+        
+        private void OnisAnsweredOperationCompleted(object arg) {
+            if ((this.isAnsweredCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.isAnsweredCompleted(this, new isAnsweredCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetReply", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet GetReply(int offerNum, string usrId) {
+            object[] results = this.Invoke("GetReply", new object[] {
+                        offerNum,
+                        usrId});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetReplyAsync(int offerNum, string usrId) {
+            this.GetReplyAsync(offerNum, usrId, null);
+        }
+        
+        /// <remarks/>
+        public void GetReplyAsync(int offerNum, string usrId, object userState) {
+            if ((this.GetReplyOperationCompleted == null)) {
+                this.GetReplyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetReplyOperationCompleted);
+            }
+            this.InvokeAsync("GetReply", new object[] {
+                        offerNum,
+                        usrId}, this.GetReplyOperationCompleted, userState);
+        }
+        
+        private void OnGetReplyOperationCompleted(object arg) {
+            if ((this.GetReplyCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetReplyCompleted(this, new GetReplyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UserReplies", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet UserReplies(string usrId) {
+            object[] results = this.Invoke("UserReplies", new object[] {
+                        usrId});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UserRepliesAsync(string usrId) {
+            this.UserRepliesAsync(usrId, null);
+        }
+        
+        /// <remarks/>
+        public void UserRepliesAsync(string usrId, object userState) {
+            if ((this.UserRepliesOperationCompleted == null)) {
+                this.UserRepliesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUserRepliesOperationCompleted);
+            }
+            this.InvokeAsync("UserReplies", new object[] {
+                        usrId}, this.UserRepliesOperationCompleted, userState);
+        }
+        
+        private void OnUserRepliesOperationCompleted(object arg) {
+            if ((this.UserRepliesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UserRepliesCompleted(this, new UserRepliesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/insertOffer", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void insertOffer(string workId, string descript, System.DateTime uploadDate, int city) {
+            this.Invoke("insertOffer", new object[] {
+                        workId,
+                        descript,
+                        uploadDate,
+                        city});
+        }
+        
+        /// <remarks/>
+        public void insertOfferAsync(string workId, string descript, System.DateTime uploadDate, int city) {
+            this.insertOfferAsync(workId, descript, uploadDate, city, null);
+        }
+        
+        /// <remarks/>
+        public void insertOfferAsync(string workId, string descript, System.DateTime uploadDate, int city, object userState) {
+            if ((this.insertOfferOperationCompleted == null)) {
+                this.insertOfferOperationCompleted = new System.Threading.SendOrPostCallback(this.OninsertOfferOperationCompleted);
+            }
+            this.InvokeAsync("insertOffer", new object[] {
+                        workId,
+                        descript,
+                        uploadDate,
+                        city}, this.insertOfferOperationCompleted, userState);
+        }
+        
+        private void OninsertOfferOperationCompleted(object arg) {
+            if ((this.insertOfferCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.insertOfferCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/accept", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void accept(string uId, int offerNum) {
+            this.Invoke("accept", new object[] {
+                        uId,
+                        offerNum});
+        }
+        
+        /// <remarks/>
+        public void acceptAsync(string uId, int offerNum) {
+            this.acceptAsync(uId, offerNum, null);
+        }
+        
+        /// <remarks/>
+        public void acceptAsync(string uId, int offerNum, object userState) {
+            if ((this.acceptOperationCompleted == null)) {
+                this.acceptOperationCompleted = new System.Threading.SendOrPostCallback(this.OnacceptOperationCompleted);
+            }
+            this.InvokeAsync("accept", new object[] {
+                        uId,
+                        offerNum}, this.acceptOperationCompleted, userState);
+        }
+        
+        private void OnacceptOperationCompleted(object arg) {
+            if ((this.acceptCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.acceptCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IsAccepted", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool IsAccepted(string uId, int offerNum) {
+            object[] results = this.Invoke("IsAccepted", new object[] {
+                        uId,
+                        offerNum});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void IsAcceptedAsync(string uId, int offerNum) {
+            this.IsAcceptedAsync(uId, offerNum, null);
+        }
+        
+        /// <remarks/>
+        public void IsAcceptedAsync(string uId, int offerNum, object userState) {
+            if ((this.IsAcceptedOperationCompleted == null)) {
+                this.IsAcceptedOperationCompleted = new System.Threading.SendOrPostCallback(this.OnIsAcceptedOperationCompleted);
+            }
+            this.InvokeAsync("IsAccepted", new object[] {
+                        uId,
+                        offerNum}, this.IsAcceptedOperationCompleted, userState);
+        }
+        
+        private void OnIsAcceptedOperationCompleted(object arg) {
+            if ((this.IsAcceptedCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.IsAcceptedCompleted(this, new IsAcceptedCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Reject", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void Reject(string uId, int offerNumber) {
+            this.Invoke("Reject", new object[] {
+                        uId,
+                        offerNumber});
+        }
+        
+        /// <remarks/>
+        public void RejectAsync(string uId, int offerNumber) {
+            this.RejectAsync(uId, offerNumber, null);
+        }
+        
+        /// <remarks/>
+        public void RejectAsync(string uId, int offerNumber, object userState) {
+            if ((this.RejectOperationCompleted == null)) {
+                this.RejectOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRejectOperationCompleted);
+            }
+            this.InvokeAsync("Reject", new object[] {
+                        uId,
+                        offerNumber}, this.RejectOperationCompleted, userState);
+        }
+        
+        private void OnRejectOperationCompleted(object arg) {
+            if ((this.RejectCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RejectCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetSortedJobs", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet GetSortedJobs(int city, int time) {
+            object[] results = this.Invoke("GetSortedJobs", new object[] {
+                        city,
+                        time});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetSortedJobsAsync(int city, int time) {
+            this.GetSortedJobsAsync(city, time, null);
+        }
+        
+        /// <remarks/>
+        public void GetSortedJobsAsync(int city, int time, object userState) {
+            if ((this.GetSortedJobsOperationCompleted == null)) {
+                this.GetSortedJobsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetSortedJobsOperationCompleted);
+            }
+            this.InvokeAsync("GetSortedJobs", new object[] {
+                        city,
+                        time}, this.GetSortedJobsOperationCompleted, userState);
+        }
+        
+        private void OnGetSortedJobsOperationCompleted(object arg) {
+            if ((this.GetSortedJobsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetSortedJobsCompleted(this, new GetSortedJobsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -448,75 +787,6 @@ namespace compuSciProj2021.JobsService {
                 return true;
             }
             return false;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Workplace {
-        
-        private string phoneField;
-        
-        private string idField;
-        
-        private string addrsField;
-        
-        private string nameField;
-        
-        private int cityField;
-        
-        /// <remarks/>
-        public string phone {
-            get {
-                return this.phoneField;
-            }
-            set {
-                this.phoneField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ID {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Addrs {
-            get {
-                return this.addrsField;
-            }
-            set {
-                this.addrsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int City {
-            get {
-                return this.cityField;
-            }
-            set {
-                this.cityField = value;
-            }
         }
     }
     
@@ -585,111 +855,6 @@ namespace compuSciProj2021.JobsService {
             }
             set {
                 this.offerNumberField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class User {
-        
-        private string phoneNumField;
-        
-        private string phoneField;
-        
-        private string idField;
-        
-        private string firstnameField;
-        
-        private string lastnameField;
-        
-        private string addrsField;
-        
-        private string mAddrsField;
-        
-        private int cityField;
-        
-        /// <remarks/>
-        public string phoneNum {
-            get {
-                return this.phoneNumField;
-            }
-            set {
-                this.phoneNumField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string phone {
-            get {
-                return this.phoneField;
-            }
-            set {
-                this.phoneField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ID {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Firstname {
-            get {
-                return this.firstnameField;
-            }
-            set {
-                this.firstnameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Lastname {
-            get {
-                return this.lastnameField;
-            }
-            set {
-                this.lastnameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Addrs {
-            get {
-                return this.addrsField;
-            }
-            set {
-                this.addrsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string mAddrs {
-            get {
-                return this.mAddrsField;
-            }
-            set {
-                this.mAddrsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int City {
-            get {
-                return this.cityField;
-            }
-            set {
-                this.cityField = value;
             }
         }
     }
@@ -891,6 +1056,174 @@ namespace compuSciProj2021.JobsService {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
     public delegate void UpdateRplyCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    public delegate void isAppliedCompletedEventHandler(object sender, isAppliedCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class isAppliedCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal isAppliedCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    public delegate void isAnsweredCompletedEventHandler(object sender, isAnsweredCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class isAnsweredCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal isAnsweredCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    public delegate void GetReplyCompletedEventHandler(object sender, GetReplyCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetReplyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetReplyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    public delegate void UserRepliesCompletedEventHandler(object sender, UserRepliesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UserRepliesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UserRepliesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    public delegate void insertOfferCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    public delegate void acceptCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    public delegate void IsAcceptedCompletedEventHandler(object sender, IsAcceptedCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class IsAcceptedCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal IsAcceptedCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    public delegate void RejectCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    public delegate void GetSortedJobsCompletedEventHandler(object sender, GetSortedJobsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetSortedJobsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetSortedJobsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
 }
 
 #pragma warning restore 1591
