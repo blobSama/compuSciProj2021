@@ -54,7 +54,7 @@
                     <asp:Button Visible="false" ID="checkAns" CssClass="sub1" runat="server" Text="Check Your Answer!" OnClick="checkAns_Click" /><br />
                     <asp:Label ID="rightOrWrong" CssClass="datalistLbl" runat="server" Text=""></asp:Label>
                     <br /><br />
-                    <asp:Label Visible="false" ID="uploadTime" CssClass="datalistLbl" runat="server" Text="Uploaded On: "></asp:Label><br /><br />
+                    <asp:Label Visible="false" ID="uploadTime" CssClass="datalistLbl" runat="server" Text=""></asp:Label><br /><br />
                     <asp:Button CssClass="sub1" ID="insertClass" runat="server" Text="Insert New Classes" OnClick="insertClass_Click" />
                 </div>
             </div>

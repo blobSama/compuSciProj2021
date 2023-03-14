@@ -17,7 +17,7 @@ namespace compuSciProj2021
             }
             else
             {
-                Response.Write("<script>alert('Must sign up to answer.')</script>");
+                Response.Write("<script>alert('Must sign up first.')</script>");
                 Server.Transfer("Register.aspx");
             }
         }

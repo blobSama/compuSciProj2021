@@ -32,6 +32,7 @@ namespace compuSciProj2021
                 tests.Visible = false;
                 showDonetests.Visible = false;
                 findJobs.Visible = false;
+                insertClass.Visible = false;
             }
             if (!Page.IsPostBack)
             {
@@ -94,9 +95,9 @@ namespace compuSciProj2021
                 int subtopNum = Convert.ToInt32(DropDownList2.SelectedValue);
                 DataSet ds = cs.getClassBySubtop(subtopNum);
                 Session["classNum"] = ds.Tables[0].Rows[0][0];
-                classText.Text = (ds.Tables[0].Rows[0][2]).ToString();
-                question.Text = (ds.Tables[0].Rows[0][4]).ToString();
-                uploadTime.Text = uploadTime.Text + (ds.Tables[0].Rows[0][5]).ToString();
+                classText.Text = (ds.Tables[0].Rows[0][1]).ToString();
+                question.Text = (ds.Tables[0].Rows[0][3]).ToString();
+                uploadTime.Text = "Uploaded On:" + (ds.Tables[0].Rows[0][5]).ToString();
                 question.Visible = true;
                 answer.Visible = true;
                 checkAns.Visible = true;
@@ -131,47 +132,64 @@ namespace compuSciProj2021
         {
             ClassService cs = new ClassService();
             int val = Convert.ToInt32(DropDownList2.SelectedValue);
-            string uId = ((User)Session["curUser"]).ID;
-            string ans = answer.Text;
-            int subTopSerial =  cs.getSubTopSerial(val, Convert.ToInt32(DropDownList1.SelectedValue)), subSerial = cs.getSubSerial(Convert.ToInt32(DropDownList1.SelectedValue));
-            DataSet ds = cs.getSubtops(Convert.ToInt32(DropDownList1.SelectedValue));
-            if (cs.checkAns(ans, val))
+            if ((User)Session["curUser"] != null)
             {
-                if (((User)Session["curUSer"]).CurSubTop == subTopSerial && ((User)Session["curUSer"]).CurTop == subSerial)
+                string uId = ((User)Session["curUser"]).ID;
+                string ans = answer.Text;
+                int subTopSerial = cs.getSubTopSerial(val, Convert.ToInt32(DropDownList1.SelectedValue)), subSerial = cs.getSubSerial(Convert.ToInt32(DropDownList1.SelectedValue));
+                DataSet ds = cs.getSubtops(Convert.ToInt32(DropDownList1.SelectedValue));
+                if (cs.checkAns(ans, val))
                 {
-                    rightOrWrong.Text = "Correct Answer!";
-                    int subTopNum = Convert.ToInt32(DropDownList1.SelectedValue);
-                    if (Convert.ToInt32(Convert.ToInt32(ds.Tables[0].Rows[ds.Tables[0].Rows.Count - 1][0])) == subTopNum)
+                    if (((User)Session["curUSer"]).CurSubTop == subTopSerial && ((User)Session["curUSer"]).CurTop == subSerial)
                     {
-                        cs.UpdateTopUsr(uId);
-                        userService us = new userService();
-                        User u = new User();
-                        DataSet dataset = us.GetUser(((User)Session["curUser"]).ID);
-                        u.CurSubTop = Convert.ToInt32(dataset.Tables[0].Rows[0][9]);
-                        u.CurTop = Convert.ToInt32(dataset.Tables[0].Rows[0][8]);
-                        Session["curUser"] = u;
-                        Server.Transfer("learnPy.aspx");
+                        rightOrWrong.Text = "Correct Answer!";
+                        int subTopNum = Convert.ToInt32(DropDownList1.SelectedValue);
+                        if (Convert.ToInt32(Convert.ToInt32(ds.Tables[0].Rows[ds.Tables[0].Rows.Count - 1][0])) == subTopNum)
+                        {
+                            cs.UpdateTopUsr(uId);
+                            userService us = new userService();
+                            User u = new User();
+                            DataSet dataset = us.GetUser(((User)Session["curUser"]).ID);
+                            u.CurSubTop = Convert.ToInt32(dataset.Tables[0].Rows[0][9]);
+                            u.CurTop = Convert.ToInt32(dataset.Tables[0].Rows[0][8]);
+                            Session["curUser"] = u;
+                            Server.Transfer("learnPy.aspx");
+                        }
+                        else
+                        {
+                            cs.UpdateSubTopUsr(uId);
+                            userService us = new userService();
+                            User u = new User();
+                            DataSet dataset = us.GetUser(((User)Session["curUser"]).ID);
+                            u.CurSubTop = Convert.ToInt32(dataset.Tables[0].Rows[0][9]);
+                            u.CurTop = Convert.ToInt32(dataset.Tables[0].Rows[0][8]);
+                            Session["curUser"] = u;
+                            Server.Transfer("learnPy.aspx");
+                        }
                     }
                     else
                     {
-                        cs.UpdateSubTopUsr(uId);
-                        userService us = new userService();
-                        User u = new User();
-                        DataSet dataset = us.GetUser(((User)Session["curUser"]).ID);
-                        u.CurSubTop = Convert.ToInt32(dataset.Tables[0].Rows[0][9]);
-                        u.CurTop = Convert.ToInt32(dataset.Tables[0].Rows[0][8]);
-                        Session["curUser"] = u;
-                        Server.Transfer("learnPy.aspx");
+                        rightOrWrong.Text = "Youv'e already answered this question. Proceed to the next lesson!";
                     }
                 }
                 else
                 {
-                    rightOrWrong.Text = "Youv'e already answered this question. Proceed to the next lesson!";
+                    rightOrWrong.Text = "Try Again...";
                 }
             }
             else
             {
-                rightOrWrong.Text = "Try Again...";
+                string ans = answer.Text;
+                int subTopSerial = cs.getSubTopSerial(val, Convert.ToInt32(DropDownList1.SelectedValue)), subSerial = cs.getSubSerial(Convert.ToInt32(DropDownList1.SelectedValue));
+                DataSet ds = cs.getSubtops(Convert.ToInt32(DropDownList1.SelectedValue));
+                if (cs.checkAns(ans, val))
+                {
+                    rightOrWrong.Text = "Correct Answer!";
+                }
+                else
+                {
+                    rightOrWrong.Text = "Try Again...";
+                }
             }
         }
 
